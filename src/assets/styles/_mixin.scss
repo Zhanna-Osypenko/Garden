@@ -1,0 +1,21 @@
+@mixin flex-container($justify-content: flex-start, $align-items:flex-start, $gap: false){
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    @if $gap{
+        gap: $gap;
+    }
+    
+}
+
+@mixin onMobile{
+    @media (max-width:768px) {
+        @content;
+    }
+}
+
+@mixin onLaptop{
+    @media (max-width:1170px) {
+        @content;
+    }
+}

@@ -1,0 +1,11 @@
+$font-color-black: #000000;
+$font-color-white: #ffffff;
+$font-color-green: rgba(51, 153, 51, 1);
+
+@function calcFluidFontSize($f-min, $f-max, $v-min, $v-max) {
+    $k: ($f-max - $f-min)/($v-max - $v-min);
+    $b: $f-min - $k * $v-min;
+    $b: $b * 1px;
+    @return calc( #{$k} * 100vw + #{$b} );
+}
+  

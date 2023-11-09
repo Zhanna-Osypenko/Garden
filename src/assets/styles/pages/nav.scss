@@ -22,38 +22,45 @@
             height: 100%;
           }
         }
-  
-        &-btn {
-          padding: 14px 30px;
-          margin-left: 24px;
-          font-size: 16px;
-          color: $font-color-green;
+
+        &-name{
           font-weight: 700;
-          border: 2px solid $font-color-green;
-          border-radius: 5px;
-          cursor: pointer;
-  
-          @include onMobile {
-            padding: 14px 24px;
-            color: $font-color-green;
-            background-color: $font-color-white;
-            border: 1px solid $font-color-green;
-          }
+          color: $font-color-green;
+          margin-left: 20px;
+          font-size: calcFluidFontSize(20, 28, 480, 1280);
         }
   
-        &-btn:hover {
-          padding: 16px 30px;
-          color: $font-color-white;
-          background-color: $font-color-green;
-          border: none;
+        // &-btn {
+        //   padding: 14px 30px;
+        //   margin-left: 24px;
+        //   font-size: 16px;
+        //   color: $font-color-green;
+        //   font-weight: 700;
+        //   border: 2px solid $font-color-green;
+        //   border-radius: 5px;
+        //   cursor: pointer;
   
-          @include onMobile {
-            padding: 14px 24px;
-            color: $font-color-white;
-            background-color: $font-color-green;
-            border: 1px solid $font-color-white;
-          }
-        }
+        //   @include onMobile {
+        //     padding: 14px 24px;
+        //     color: $font-color-green;
+        //     background-color: $font-color-white;
+        //     border: 1px solid $font-color-green;
+        //   }
+        // }
+  
+        // &-btn:hover {
+        //   padding: 16px 30px;
+        //   color: $font-color-white;
+        //   background-color: $font-color-green;
+        //   border: none;
+  
+        //   @include onMobile {
+        //     padding: 14px 24px;
+        //     color: $font-color-white;
+        //     background-color: $font-color-green;
+        //     border: 1px solid $font-color-white;
+        //   }
+        // }
   
         @include onMobile {
           position: absolute;

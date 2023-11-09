@@ -38,7 +38,8 @@ function Nav() {
                 alt="hello"
               />
             </div>
-            <button className="navbar__left-btn">Catalog</button>
+            <h2 className="navbar__left-name">GardenLife</h2>
+            {/* <button className="navbar__left-btn">Catalog</button> */}
           </div>
 
           <div className="navbar__menu-icon"  onClick={handleClick}>

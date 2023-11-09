@@ -1,0 +1,124 @@
+.home-sale {
+  &__content {
+    width: 100%;
+    margin-top: 80px;
+
+    &-title {
+      display: flex;
+      margin-bottom: 20px;
+
+      & > h2 {
+        font-size: 40px;
+        font-weight: 700;
+      }
+
+      & > button {
+        padding: 14px 30px;
+        margin-left: 30px;
+        font-size: 14px;
+        font-weight: 600;
+        color: $font-color-green;
+        border: 2px solid $font-color-green;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          color: $font-color-white;
+          background-color: $font-color-green;
+          border: none;
+          transition: transform 0.5s ease;
+        }
+      }
+    }
+  }
+
+  &__products {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 8px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #dfdfdf;
+      border-radius: 4px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $font-color-green;
+      border-radius: 4px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: $font-color-green;
+    }
+
+    // display: flex;
+    // flex-wrap: wrap;
+    // gap: 20px;
+  }
+
+  &__product {
+    position: relative;
+    // background-color: yellowgreen;
+    padding: 10px;
+    min-width: 278px;
+    min-height: 250px;
+    cursor: pointer;
+
+    & > h6 {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+
+      color: red;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    & > img {
+      display: block;
+      width: 100%;
+      min-height: 278px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-top: 10px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      opacity: 1;
+
+      &:hover {
+        opacity: .8;
+        transform: scale(1.05);
+        transition: transform 0.5s ease;
+      }
+    }
+
+    &>h3{
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px;
+    }
+
+    &>p{
+        font-size: 16px;
+        font-weight: 600;
+        color: red;
+        padding: 10px;
+
+        &>span{
+            font-size: 20px;
+            font-weight: 500;
+            color: $font-color-black;
+            text-decoration: line-through;
+        }
+    }
+  }
+}

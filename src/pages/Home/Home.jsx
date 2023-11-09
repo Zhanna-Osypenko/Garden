@@ -18,7 +18,7 @@ const Home = () => {
         <Nav />
         <Header />
         <HomeCatalog />
-        {/* <HomeDiscount /> */}
+        <HomeDiscount />
         {/* <HomeSale /> */}
         {/* <Footer /> */}
       </div>

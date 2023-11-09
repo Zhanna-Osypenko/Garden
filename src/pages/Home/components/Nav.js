@@ -33,16 +33,15 @@ function Nav() {
         <div className="navbar">
           <div className="navbar__left">
             <div className="navbar__left-logo">
-              {/* <img src="./Home/Home11.svg" alt="logo" /> */}
               <img
-                src="https://thumbs.dreamstime.com/b/green-leaf-logo-ecology-nature-vector-illustration-124462441.jpg"
+                src="./Header/header11.svg"
                 alt="hello"
               />
             </div>
             <button className="navbar__left-btn">Catalog</button>
           </div>
 
-          <div className="navbar__menu-icon"    onClick={handleClick}>
+          <div className="navbar__menu-icon"  onClick={handleClick}>
             {clicked ? "\u2716" : "\u2630"}
           </div>
 
@@ -62,7 +61,7 @@ function Nav() {
             <div className="navbar__right-cart">
               {/* <img src="./images/Home12.svg" alt="cart" /> */}
               <img
-                src="https://www.freeiconspng.com/thumbs/bags-icon/bag-icon-6.png"
+                src="./Header/header12.svg"
                 alt="cart"
               />
             </div>

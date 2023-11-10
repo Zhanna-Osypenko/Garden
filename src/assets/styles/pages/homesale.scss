@@ -1,7 +1,7 @@
 .home-sale {
+
   &__content {
     width: 100%;
-    margin-top: 80px;
 
     &-title {
       display: flex;
@@ -16,7 +16,7 @@
 
 
       & > h2 {
-        font-size: calcFluidFontSize(30, 36, 480, 1280);
+        font-size: calcFluidFontSize(24, 30, 480, 1280);
         font-weight: 700;
       }
 
@@ -82,7 +82,8 @@
     position: relative;
     // background-color: yellowgreen;
     padding: 10px;
-    min-width: 278px;
+    // min-width: 278px;
+    max-width: 278px;
     min-height: 250px;
     cursor: pointer;
 

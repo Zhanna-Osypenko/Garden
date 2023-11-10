@@ -8,6 +8,7 @@
 
   &__title {
     display: flex;
+    align-items: center;
     margin-bottom: 20px;
 
     @include onMobile{
@@ -18,7 +19,7 @@
     }
 
     h2 {
-      font-size: calcFluidFontSize(32, 40, 480, 1280);
+      font-size: calcFluidFontSize(24, 30, 480, 1280);
       font-weight: 700;
     }
 

@@ -43,6 +43,8 @@
         color: $font-color-green;
         font-weight: 600;
         cursor: pointer;
+
+        transition: background-color 0.3s ease;
   
         &:hover{
           color: $font-color-white;

@@ -1,18 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function HomeSale() {
-  // const [saleProducts, setSaleProducts] = useState([]);
-
-  // useEffect(() => {
-  //   // Здесь вам нужно запросить данные о товарах со скидкой с бэкенда
-  //   // и установить их в состояние saleProducts с помощью setSaleProducts
-  //   // Например, с использованием fetch:
-  //   fetch("http://localhost:3333/sale/send")
-  //     .then((response) => response.json())
-  //     .then((data) => setSaleProducts(data))
-  //     .catch((error) => console.error("Error fetching sale products:", error));
-  // }, []);
-
+  
   return (
     <div className="home-sale">
       <div className="container">

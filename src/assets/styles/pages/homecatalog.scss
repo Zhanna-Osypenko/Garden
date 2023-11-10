@@ -10,8 +10,15 @@
     display: flex;
     margin-bottom: 20px;
 
+    @include onMobile{
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
     h2 {
-      font-size: 40px;
+      font-size: calcFluidFontSize(32, 40, 480, 1280);
       font-weight: 700;
     }
 
@@ -25,12 +32,18 @@
       border-radius: 5px;
       cursor: pointer;
 
+      transition: background-color 0.3s ease;
+
+      @include onMobile{
+        margin-left: 0px;
+      }
+
       &:hover {
         color: $font-color-white;
         background-color: $font-color-green;
-        border: none;
-        transition: transform 0.5s ease;
       }
+
+
     }
   }
 
@@ -95,12 +108,12 @@
       font-size: 18px;
       font-weight: 600;
       // color: $font-color-green;
+      transition: all 0.3s ease;
     }
 
     &:hover {
       h3 {
         transform: scale(0.9);
-        transition: transform 0.5s ease;
       }
 
     }

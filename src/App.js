@@ -2,6 +2,7 @@ import "./assets/styles/main.scss";
 import React from "react"
 import { Home } from "./pages";
 import ErrorPage from "pages/ErrorPage/ErrorPage";
+import MainCatalogPage from "pages/Catalog/MainCatalogPage";
 
 
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
@@ -14,7 +15,8 @@ const App = () => {
         {/* <Home/> */}
 
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route exact path="/" element={<Home/>}/>
+          <Route path="/catalog" element={<MainCatalogPage/>}/>
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </Router>

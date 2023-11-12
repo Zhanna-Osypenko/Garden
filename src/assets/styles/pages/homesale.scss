@@ -46,6 +46,7 @@
 
   &__products {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     overflow-x: auto;
     padding-bottom: 20px;
@@ -72,17 +73,11 @@
     &::-webkit-scrollbar-thumb:hover {
       background: $font-color-green;
     }
-
-    // display: flex;
-    // flex-wrap: wrap;
-    // gap: 20px;
   }
 
   &__product {
     position: relative;
-    // background-color: yellowgreen;
     padding: 10px;
-    // min-width: 278px;
     max-width: 278px;
     min-height: 250px;
     cursor: pointer;
@@ -92,9 +87,13 @@
       top: 30px;
       right: 30px;
 
-      color: red;
+      padding: 5px 10px;
+      color: $font-color-white;
+      background-color: red;
+      border-radius: 104px;
       font-size: 24px;
       font-weight: 600;
+      z-index: 1;
     }
 
     & > img {

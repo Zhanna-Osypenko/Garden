@@ -1,0 +1,11 @@
+.error-image{
+    background-image: url("../../../../public/ErrorPage/err1.svg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: calc(100vh - 80px);
+
+    @include onMobile{
+        margin-top: 52px;
+      }
+}

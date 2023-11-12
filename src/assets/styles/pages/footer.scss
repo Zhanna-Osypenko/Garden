@@ -17,6 +17,7 @@
     @include onMobile {
       flex-direction: column;
       gap: 32px;
+      padding: 10px;
     }
   }
 
@@ -52,7 +53,14 @@
           width: 46px;
           height: 46px;
           margin: 0 auto;
+          transition: transform 0.3s;
+
+          &:hover{
+            filter: invert(50%);
+            transform: scale(1.1);
+          }
         }
+
         figcaption {
           margin-top: 15px;
         }
@@ -71,11 +79,14 @@
       font-weight: 700;
     }
 
-    & > a {
+    & > .address {
+      display: inline-block;
+      // background-color: yellow;
       text-decoration: none;
-      font-size: calcFluidFontSize(24, 32, 480, 1280);
+      font-size: calcFluidFontSize(20, 30, 480, 1280);
       font-weight: 500;
       color: $font-color-black;
+      width: auto;
     }
 
     & > p:first-child {
@@ -89,6 +100,11 @@
 
   &-map {
     margin-bottom: 20px;
+
+    @include onMobile{
+      padding: 10px;
+    }
+
     & > iframe {
       width: 100%;
     }

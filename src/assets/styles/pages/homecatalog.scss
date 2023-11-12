@@ -52,7 +52,6 @@
     display: flex;
     gap: 20px;
     overflow-x: auto;
-    // background-color: goldenrod;
 
     /* width */
     &::-webkit-scrollbar {
@@ -79,13 +78,10 @@
   }
 
   &__cart {
-    // background-color: rgb(253, 206, 206);
     padding: 10px;
     min-width: 278px;
     min-height: 250px;
     cursor: pointer;
-
-    
 
     img {
       width: 100%;

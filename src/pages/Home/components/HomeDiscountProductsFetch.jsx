@@ -33,7 +33,7 @@ function HomeDiscountProductsFetch({ categoryId, categoryName }) {
           <div className="home-sale__products">
             {saleProducts.map((product) => (
               <div key={product.id} className="home-sale__product">
-                <h6>{`-${product.discont_price}%`}</h6>
+                <h6>{`-${((1 - product.discont_price / product.price) * 100).toFixed(0)}%`}</h6>
                 <img
                   src={`${backendURL}${product.image}`}
                   alt={product.title}

@@ -12,6 +12,7 @@ import HomeSale from './components/HomeSale';
 import HomeSalePage from './components/HomeSalePage';
 import Footer from './components/Footer';
 import Nav from "./components/Nav";
+import HomeDiscountProductsFetch2 from "./components/HomeDiscountProductsFetch2";
 
 const Home = () => {
   return (
@@ -25,7 +26,8 @@ const Home = () => {
         {/* <HomeSale /> */}
         {/* <HomeSaleFetch categoryId={1}/> */}
         {/* <HomeDiscountProductsFetch categoryId={1}/> */}
-        <HomeSalePage/>
+        <HomeDiscountProductsFetch2/>
+        {/* <HomeSalePage/> */}
         <Footer />
       </div>
     </>

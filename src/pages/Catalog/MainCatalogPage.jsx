@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Nav from "pages/Home/components/Nav";
-import Footer from "pages/Home/components/Footer";
 
 function MainCatalogPage() {
   const [catalogCart, setCatalogCart] = useState([]);
@@ -16,7 +14,6 @@ function MainCatalogPage() {
 
   return (
     <>
-      <Nav />
       <div className="home-catalog">
         <div className="container">
           <div className="home-catalog__content">
@@ -26,9 +23,9 @@ function MainCatalogPage() {
                 All Categories
               </button>
             </div>
-            <div className="home-catalog__carts">
+            <div className="main-catalog__carts">
               {catalogCart.map((category) => (
-                <div key={category.id} className="home-catalog__cart">
+                <div key={category.id} className="main-catalog__cart">
                   <img
                     src={`${backendURL}${category.image}`}
                     alt={category.title}
@@ -41,7 +38,6 @@ function MainCatalogPage() {
         </div>
       </div>
 
-      <Footer />
     </>
   );
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function HomeDiscountProductsFetch2() {
   const [discountProducts, setDiscountProducts] = useState([]);
-  
+
   const backendURL = "http://localhost:3333";
 
   useEffect(() => {
@@ -24,15 +24,16 @@ function HomeDiscountProductsFetch2() {
       <div className="container">
         <div className="home-sale__content">
           <div className="home-sale__content-title">
-            <h2>
-              Sale Products
-            </h2>
+            <h2>Sale Products</h2>
           </div>
 
           <div className="home-sale__products">
             {saleProducts.map((product) => (
               <div key={product.id} className="home-sale__product">
-                <h6>{`-${((1 - product.discont_price / product.price) * 100).toFixed(0)}%`}</h6>
+                <h6>{`-${(
+                  (1 - product.discont_price / product.price) *
+                  100
+                ).toFixed(0)}%`}</h6>
                 <img
                   src={`${backendURL}${product.image}`}
                   alt={product.title}
@@ -41,7 +42,9 @@ function HomeDiscountProductsFetch2() {
                   <span>{`${product.price}$`}</span> &nbsp;&nbsp;
                   {`${product.discont_price}$`}
                 </p>
-                <h3>{product.title}</h3>
+                <a href="#" className="home-sale__product-link">
+                  {product.title}
+                </a>
               </div>
             ))}
           </div>

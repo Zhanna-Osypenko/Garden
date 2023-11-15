@@ -22,7 +22,7 @@ function Footer() {
             </div>
             <div className="footer-address">
               <h5>Address</h5>
-              <a href="/#" className="address">Linkstraße 2, 8 OG, 10785, <br /> Berlin, Deutschland</a>
+              <a href="#" className="address">Linkstraße 2, 8 OG, 10785, <br /> Berlin, Deutschland</a>
               <p>Working Hours:</p>
               <p>24 hours a day</p>
             </div>

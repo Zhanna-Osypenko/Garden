@@ -1,27 +1,24 @@
 import "./assets/styles/main.scss";
-import React from "react"
-import { Home } from "./pages";
+import React from "react";
+import { Home, Layout } from "./pages";
 import ErrorPage from "pages/ErrorPage/ErrorPage";
 import MainCatalogPage from "pages/Catalog/MainCatalogPage";
 
-
-import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+// import { Layout } from "pages/Layout";
 
 const App = () => {
   return (
     <>
-      
-      <Router>
-        {/* <Home/> */}
-
-        <Routes>
-          <Route index path="/" element={<Home/>}/>
-          <Route path="/catalog" element={<MainCatalogPage/>}/>
-          <Route path="*" element={<ErrorPage/>}/>
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/catalog" element={<MainCatalogPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

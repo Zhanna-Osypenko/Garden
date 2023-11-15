@@ -11,6 +11,11 @@
     align-items: center;
     margin-bottom: 20px;
 
+    @include onLaptop{
+      justify-content: center;
+      align-items: center;
+    }
+
     @include onMobile{
       flex-direction: column;
       gap: 10px;
@@ -79,9 +84,12 @@
 
   &__cart {
     padding: 10px;
+    margin-bottom: 16px;
     min-width: 278px;
     min-height: 250px;
     cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 20px;
 
     img {
       width: 100%;

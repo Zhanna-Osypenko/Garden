@@ -1,5 +1,4 @@
 .home-sale {
-
   &__content {
     width: 100%;
 
@@ -7,17 +6,21 @@
       display: flex;
       margin-bottom: 20px;
 
-      @include onMobile{
-      flex-direction: column;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-    }
-
+      @include onMobile {
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+      }
 
       & > h2 {
         font-size: calcFluidFontSize(24, 30, 480, 1280);
         font-weight: 700;
+
+        @include onLaptop{
+          margin: 0 auto;
+        }
+        
       }
 
       & > button {
@@ -32,7 +35,7 @@
 
         transition: background-color 0.3s ease;
 
-        @include onMobile{
+        @include onMobile {
           margin-left: 0px;
         }
 
@@ -47,6 +50,7 @@
   &__products {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     overflow-x: auto;
     padding-bottom: 20px;
@@ -81,6 +85,8 @@
     max-width: 278px;
     min-height: 250px;
     cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 20px;
 
     & > h6 {
       position: absolute;
@@ -107,30 +113,39 @@
       opacity: 1;
 
       &:hover {
-        opacity: .8;
+        opacity: 0.8;
         transform: scale(1.05);
         transition: transform 0.5s ease;
       }
     }
 
-    &>h3{
-        font-size: 16px;
-        font-weight: 500;
-        padding: 10px;
+    & > a {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      color: $font-color-black;
+      padding: 10px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      // @include linkUnderlineHover($font-color-black);
     }
 
-    &>p{
-        font-size: 16px;
-        font-weight: 600;
-        color: red;
-        padding: 10px;
+    & > p {
+      font-size: 16px;
+      font-weight: 600;
+      color: red;
+      padding: 10px;
 
-        &>span{
-            font-size: 20px;
-            font-weight: 500;
-            color: $font-color-black;
-            text-decoration: line-through;
-        }
+      & > span {
+        font-size: 20px;
+        font-weight: 500;
+        color: $font-color-black;
+        text-decoration: line-through;
+      }
     }
   }
 }

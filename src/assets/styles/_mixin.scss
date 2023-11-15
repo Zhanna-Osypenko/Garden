@@ -19,3 +19,28 @@
         @content;
     }
 }
+
+@mixin linkUnderlineHover($color: $font-color-green){
+    position: relative;
+    text-decoration: none;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 1px;
+      background-color: $color;
+    }
+  
+    &:hover::before {
+      width: 100%;
+    }
+  
+    &::before {
+      transition: width 0.35s;
+    }
+  }
+  
+  

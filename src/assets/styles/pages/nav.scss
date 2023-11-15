@@ -60,17 +60,21 @@
   
           li {
             padding: 16px;
+
+            a{
+              @include linkUnderlineHover($font-color-black);
+            }
   
             @include onMobile {
               text-align: center;
               padding: 2rem;
               width: 100%;
               display: table;
-  
-              a::before {
-                content: '';
-                background-color: $font-color-white;
+
+              a{
+                @include linkUnderlineHover($font-color-white);
               }
+
             }
   
           }
@@ -78,10 +82,6 @@
           .nav-links {
             color: $font-color-black;
             font-weight: 500;
-  
-            &:hover {
-              // text-decoration: underline;
-            }
   
             @include onMobile{
               color: $font-color-white;

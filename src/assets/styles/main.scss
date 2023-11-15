@@ -26,27 +26,27 @@ ol {
 
 // ========== link a start =========
 
-a {
-	position: relative;
-	text-decoration: none;
-}
+// a {
+// 	position: relative;
+// 	text-decoration: none;
+// }
 
-a::before {
-	content: '';
-	position: absolute;
-	left: 0; bottom: -5px;
-	width: 0;
-	height: 1px;
-	background-color: $font-color-green;
-}
+// a::before {
+// 	content: '';
+// 	position: absolute;
+// 	left: 0; bottom: -5px;
+// 	width: 0;
+// 	height: 1px;
+// 	background-color: $font-color-green;
+// }
 
-a:hover:before {
-	width: 100%;
-}
+// a:hover:before {
+// 	width: 100%;
+// }
 
-a::before {
-	transition: width 0.35s;
-}
+// a::before {
+// 	transition: width 0.35s;
+// }
 
 // ========== link a end =========
 .container {

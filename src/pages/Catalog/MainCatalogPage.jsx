@@ -19,9 +19,6 @@ function MainCatalogPage() {
           <div className="home-catalog__content">
             <div className="home-catalog__title">
               <h2>Catalog</h2>
-              <button className="home-catalog__title-btn">
-                All Categories
-              </button>
             </div>
             <div className="main-catalog__carts">
               {catalogCart.map((category) => (

@@ -1,0 +1,177 @@
+.products {
+  //   background-color: rgb(226, 246, 185);
+
+  &__content {
+
+    h1{
+        margin-top: 16px;
+    }
+
+    .tag {
+      display: flex;
+      gap: 12px;
+      padding: 24px 0;
+
+      &__item {
+        color: #666;
+
+        &--active {
+          color: $font-color-black;
+        }
+      }
+    }
+  }
+
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 60%;
+
+    &-price {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+
+      & > .price-box {
+        display: flex;
+        gap: 12px;
+
+        .price__item {
+          width: 100px;
+          border-radius: 5px;
+          padding: 5px;
+          background-color: #eaeaea;
+          border: 1px solid rgb(215, 215, 215);
+        }
+      }
+    }
+
+    &-discount {
+      display: flex;
+      gap: 12px;
+
+      &>input{
+        display: block;
+        transform: scale(1.5); 
+        background-color: #ea7878;
+        border: 1px solid rgb(215, 215, 215);
+      }
+    }
+
+    &-sorted {
+      display: flex;
+      gap: 12px;
+      //   background-color: goldenrod;
+
+      .dropdown {
+      }
+    }
+  }
+
+  &-cards__list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    // background-color: red;
+
+    @include onLaptop {
+      justify-content: center;
+    }
+
+    @include onMobile {
+      justify-content: center;
+    }
+
+    .product-card {
+      position: relative;
+      padding: 10px;
+      max-width: 278px;
+      min-height: 250px;
+      cursor: pointer;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      border-radius: 20px;
+
+      & > h3 {
+        margin-top: 10px;
+        font-size: 14px;
+
+        & > a {
+          color: $font-color-black;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      & > h6 {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+
+        padding: 5px 10px;
+        color: $font-color-white;
+        background-color: red;
+        border-radius: 104px;
+        font-size: 24px;
+        font-weight: 600;
+        z-index: 1;
+      }
+
+      & > img {
+        display: block;
+        width: 100%;
+        min-height: 278px;
+        object-fit: cover;
+        border-radius: 20px;
+        margin-top: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        opacity: 1;
+
+        &:hover {
+          opacity: 0.8;
+          transform: scale(1.05);
+          transition: transform 0.5s ease;
+        }
+      }
+
+      & > a {
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        color: $font-color-black;
+        padding: 10px;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      & > p {
+        font-size: 16px;
+        font-weight: 600;
+        color: red;
+        padding: 10px;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        & > span {
+          font-size: 20px;
+          font-weight: 500;
+          color: $font-color-black;
+          margin-right: 12px;
+        }
+
+        &:last-child {
+          color: $font-color-black;
+        }
+      }
+    }
+  }
+}

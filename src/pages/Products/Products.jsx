@@ -1,4 +1,5 @@
 import React from "react";
+import ProductsAllFetch from "./components/ProductsAllFetch";
 
 const Products = () => {
   return (
@@ -7,30 +8,42 @@ const Products = () => {
         <div className="products__content">
           <h1>All products</h1>
 
-          <div className="products__page-pointer">
-            <span>Home</span>/<span>All products</span>
+          <div className="tag">
+            <span className="tag__item">Home</span>/
+            <span className="tag__item tag__item--active">All products</span>
           </div>
 
           <div className="products__filters">
             <div className="products__filters-price">
               <h4>Price</h4>
+              <div className="price-box">
+                <input className="price__item" type="text" />
+                <input className="price__item" type="text" />
+              </div>
             </div>
-            <div  className="products__filters-discount">
-              <h4>Discounted items</h4>
+
+            <div className="products__filters-discount">
+              <label htmlFor="discountCheckbox">Discounted items</label>
+              <input type="checkbox" id="discountCheckbox" />
             </div>
-            <div  className="products__filters-sorted">
-              <h4>Sort by</h4>
-              <div>
-                <div><span>default</span></div>
-                <div><span>Price</span></div>
-                <div><span>Sale</span></div>
+
+            <div className="products__filters-sorted">
+              <h4>Sort by: </h4>
+              <div className="dropdown">
+                <div>
+                  <span>Default</span>
+                </div>
+                <div className="dropdown__content">
+                  <ul>
+                    <li>Price</li>
+                    <li>Sale</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="products__cards">
-
-          </div>
+          <ProductsAllFetch />
         </div>
       </div>
     </section>

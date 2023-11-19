@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 function HomeCatalogFetch() {
   const [catalogCart, setCatalogCart] = useState([]);
@@ -11,14 +12,16 @@ function HomeCatalogFetch() {
       .then((data) => setCatalogCart(data))
       .catch((error) => console.error("Error fetching data:", error));
   }, [backendURL]);
-  
+
   return (
     <div className="home-catalog">
       <div className="container">
         <div className="home-catalog__content">
           <div className="home-catalog__title">
             <h2>Catalog</h2>
-            <button className="home-catalog__title-btn">All Categories</button>
+            <NavLink className="home-catalog__title-btn" to="/catalog">
+              All Categories
+            </NavLink>
           </div>
           <div className="home-catalog__carts">
             {catalogCart.map((category) => (

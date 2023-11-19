@@ -2,6 +2,9 @@ import React from "react";
 import ProductsAllFetch from "./components/ProductsAllFetch";
 
 const Products = () => {
+
+
+  
   return (
     <section className="products">
       <div className="container">

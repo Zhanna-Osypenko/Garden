@@ -5,6 +5,8 @@ function ProductsAllFetch() {
   const [allProducts, setAllProducts] = useState([]);
   const backendURL = "http://localhost:3333";
 
+  // http://localhost:3333/products/all
+
   useEffect(() => {
     fetch(`${backendURL}/products/all`)
       .then((response) => response.json())

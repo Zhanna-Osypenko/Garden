@@ -10,12 +10,12 @@ import { fetchProducts } from "store/actions/products/product.action";
 
 
 const App = () => {
-  const dispatch = useDispatch();
-  const {loading} = useSelector(state => state);
+  // const dispatch = useDispatch();
+  // const {loading} = useSelector(state => state);
 
-  useEffect(() => {
-    dispatch(fetchProducts())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(fetchProducts())
+  // }, [])
 
   // console.log('loading => ',loading);
 

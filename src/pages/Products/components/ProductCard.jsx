@@ -1,11 +1,10 @@
 import React from "react";
 
-function ProductCard({ product, backendURL }) {
-    // const discountSpanStyle = {
-    //     textDecoration: hasDiscount ? "line-through" : "none",
-    //   };
-    
+// function ProductCard({ product, backendURL }) 
+
+function ProductCard({ product }) {
   const hasDiscount = product.discont_price !== null;
+  const backendURL = 'http://localhost:3333';
 
   return (
     <div className="product-card">

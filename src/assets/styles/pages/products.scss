@@ -66,6 +66,33 @@
       //   background-color: goldenrod;
 
       .dropdown {
+        position: relative;
+        &__content{
+          display: block;
+          background-color: #fff;
+          padding: 12px;
+          position: absolute;
+          top: 8px;
+          right: -120px;
+          z-index: 2;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          min-width: 200px;
+          margin-top: 20px;
+          border-radius: 20px;
+
+           ul{
+            li{
+              padding: 12px;
+              text-align: center;
+              cursor: pointer;
+              &:hover{
+                background-color: #f2f2f2;
+                border-radius: 10px;
+              }
+            }
+
+           }
+        }
       }
     }
   }

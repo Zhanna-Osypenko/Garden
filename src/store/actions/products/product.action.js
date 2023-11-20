@@ -1,7 +1,10 @@
 import {
 FETCH_PRODUCTS_REQUEST, 
 FETCH_PRODUCTS_SUCCESS, 
-FETCH_PRODUCTS_FAILURE
+FETCH_PRODUCTS_FAILURE,
+FILTER_BY_PRICE_DESCENDING,
+FILTER_BY_PRICE_ASCENDING,
+FILTER_BY_DEFAULT
 } from './types';
 
 export const fetchProductsRequest = () => ({
@@ -19,18 +22,33 @@ export const fetchProductsFailure = (error) => ({
     payload: error
 });
 
+export const filterByAscending = () => ({
+    type: FILTER_BY_PRICE_ASCENDING
+});
+
+export const filterByDescending = () => ({
+    type: FILTER_BY_PRICE_DESCENDING
+});
+
+export const filterByDefault = () => ({
+    type: FILTER_BY_DEFAULT
+});
+
+
+
 export const fetchProducts = () => {
     return async (dispatch) => {
         dispatch(fetchProductsRequest());
-        // console.log('fetchProducts');
-        // http://localhost:3333/products/all
+        console.log('fetchProducts in action');
 
         try {
             let response = await fetch('http://localhost:3333/products/all');
             let data = await response.json();
-            console.log('data try ', data);
+            console.log('data try => ', data);
+
+            dispatch(fetchProductsSuccess(data));
         } catch (error) {
-            
+            dispatch(fetchProductsFailure('Products not found!'));
         }
     }
 };

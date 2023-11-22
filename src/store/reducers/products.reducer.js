@@ -54,13 +54,15 @@ const productsReducer = (state = initState, action) => {
     case FILTER_BY_PRICE:
       const filteredProducts = filteredProductsByPrice(
         state.products,
-        action.payload
+        action.payload.price
       );
+
       const sortedProducts = sortProducts(filteredProducts, state.sortBy);
 
       return {
         ...state,
-        filteredProducts: sortedProducts,
+        // filteredProducts: sortedProducts,
+        filteredProducts: action.payload.isSale? sortedProducts.filter(item => item.discont_price !==null): sortedProducts,
       };
 
     case FILTER_BY_SALE:

@@ -26,9 +26,9 @@ export const setSortBy = (sortBy) => ({
   payload: sortBy,
 });
 
-export const filterByPrice = (price) => ({
+export const filterByPrice = (price, isSale) => ({
   type: FILTER_BY_PRICE,
-  payload: price,
+  payload: { price, isSale },
 });
 
 export const filterBySale = () => ({

@@ -5,9 +5,6 @@ import {
   FILTER_BY_PRICE,
   SET_SORT_BY,
   FILTER_BY_SALE,
-  // FILTER_BY_DEFAULT,
-  // FILTER_BY_PRICE_ASCENDING,
-  // FILTER_BY_PRICE_DESCENDING,
 } from "store/actions/products/types";
 
 const initState = {
@@ -73,31 +70,6 @@ const productsReducer = (state = initState, action) => {
           (item) => item.discont_price !== null
         ),
       };
-
-    // case FILTER_BY_PRICE_ASCENDING:
-    //   return {
-    //     ...state,
-    //     filteredProducts: [...state.products].sort((a, b) => {
-    //       const priceA = a.discont_price !== null ? a.discont_price : a.price;
-    //       const priceB = b.discont_price !== null ? b.discont_price : b.price;
-
-    //       return priceA - priceB;
-    //     }),
-    //   };
-    
-    // case FILTER_BY_PRICE_DESCENDING:
-    //   return {
-    //     ...state,
-    //     filteredProducts: [...state.products].sort((a, b) => {
-    //       const priceA = a.discont_price !== null ? a.discont_price : a.price;
-    //       const priceB = b.discont_price !== null ? b.discont_price : b.price;
-
-    //       return priceB - priceA;
-    //     }),
-    //   };
-
-    // case FILTER_BY_DEFAULT:
-    //   return { ...state, filteredProducts: [] };
 
     default:
       return state;

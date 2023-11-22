@@ -35,15 +35,17 @@ const options = [
 ];
 
 const Products = () => {
-  const { loading, products, error, filteredProducts } = useSelector(state => state);
+  const { loading, products, error, filteredProducts } = useSelector(
+    (state) => state
+  );
 
   const [selectedOption, setSelectedOption] = useState(options[0]);
   const dispatch = useDispatch();
 
   let [priceValue, setPriceValue] = useState({
-    min: '0',
-    max: '99999'
-  })
+    min: "0",
+    max: "99999",
+  });
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -51,7 +53,7 @@ const Products = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(filterByPrice(priceValue))
+    dispatch(filterByPrice(priceValue));
   }, [priceValue]);
 
   useEffect(() => {
@@ -59,8 +61,16 @@ const Products = () => {
   }, [selectedOption]);
 
   const handlerChangePrice = (e) => {
-    setPriceValue(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
-}
+    setPriceValue((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleDiscountCheckboxChange = (event) => {
+    console.log('event checkbox =>', event);
+    dispatch(filterBySale(event.target.checked));
+  };
 
   // useEffect(() => {
   //   if (selectedOption.label === "Price Ascending") {
@@ -95,29 +105,32 @@ const Products = () => {
             <div className="products__filters-price">
               <h4>Price</h4>
               <div className="price-box">
-                <input 
-                type="text" 
-                name='min'
-                className="price__item" 
-                placeholder="from price"
-                value={priceValue?.min}
-                onChange={handlerChangePrice}
+                <input
+                  type="text"
+                  name="min"
+                  className="price__item"
+                  placeholder="from price"
+                  value={priceValue?.min}
+                  onChange={handlerChangePrice}
                 />
-                <input 
-                type="text" 
-                name='max'
-                className="price__item" 
-                placeholder="to price"
-                value={priceValue?.max}
-                onChange={handlerChangePrice} 
+                <input
+                  type="text"
+                  name="max"
+                  className="price__item"
+                  placeholder="to price"
+                  value={priceValue?.max}
+                  onChange={handlerChangePrice}
                 />
-                
               </div>
             </div>
 
             <div className="products__filters-discount">
               <label htmlFor="discountCheckbox">Discounted items</label>
-              <input type="checkbox" id="discountCheckbox" />
+              <input
+                type="checkbox"
+                id="discountCheckbox"
+                onChange={handleDiscountCheckboxChange}
+              />
             </div>
 
             <div className="products__filters-sorted">
@@ -140,7 +153,6 @@ const Products = () => {
                   <ProductCard key={product.id} product={product} />
                 ))}
           </div>
-
         </div>
       </div>
     </section>

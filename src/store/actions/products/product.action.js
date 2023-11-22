@@ -5,9 +5,6 @@ import {
   FILTER_BY_PRICE,
   SET_SORT_BY,
   FILTER_BY_SALE,
-//   FILTER_BY_PRICE_DESCENDING,
-//   FILTER_BY_PRICE_ASCENDING,
-//   FILTER_BY_DEFAULT,
 } from "./types";
 
 export const fetchProductsRequest = () => ({
@@ -38,17 +35,6 @@ export const filterBySale = () => ({
   type: FILTER_BY_SALE,
 });
 
-// export const filterByAscending = () => ({
-//   type: FILTER_BY_PRICE_ASCENDING,
-// });
-
-// export const filterByDescending = () => ({
-//   type: FILTER_BY_PRICE_DESCENDING,
-// });
-
-// export const filterByDefault = () => ({
-//   type: FILTER_BY_DEFAULT,
-// });
 
 export const fetchProducts = () => {
   return async (dispatch) => {

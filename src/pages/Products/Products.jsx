@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
+  filterByPrice,
+  setSortBy,
+  filterBySale,
   filterByAscending,
   filterByDescending,
   filterByDefault,
@@ -32,32 +35,46 @@ const options = [
 ];
 
 const Products = () => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const { loading, products, error, filteredProducts } = useSelector(state => state);
 
+  const [selectedOption, setSelectedOption] = useState(options[0]);
   const dispatch = useDispatch();
-  const { loading, products, error, filteredProducts } = useSelector(
-    (state) => state
-  );
+
+  let [priceValue, setPriceValue] = useState({
+    min: '0',
+    max: '99999'
+  })
 
   useEffect(() => {
     dispatch(fetchProducts());
-    console.log("useEffect loading&products => ", loading, products);
+    // console.log("useEffect loading&products => ", loading, products);
   }, []);
 
-  console.log("products!!! =>", products);
-  console.log("error!!! =>", error);
+  useEffect(() => {
+    dispatch(filterByPrice(priceValue))
+  }, [priceValue]);
 
   useEffect(() => {
-    if (selectedOption.label === "Price Ascending") {
-      dispatch(filterByAscending());
-    } else if (selectedOption.label === "Price Descending") {
-      dispatch(filterByDescending());
-    } else {
-      dispatch(filterByDefault());
-    }
+    dispatch(setSortBy(selectedOption));
   }, [selectedOption]);
 
-  console.log('filteredProducts => ', filteredProducts);
+  const handlerChangePrice = (e) => {
+    setPriceValue(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
+}
+
+  // useEffect(() => {
+  //   if (selectedOption.label === "Price Ascending") {
+  //     dispatch(filterByAscending());
+  //   } else if (selectedOption.label === "Price Descending") {
+  //     dispatch(filterByDescending());
+  //   } else if (selectedOption.label === "Sale") {
+  //     dispatch(filterBySale());
+  //   } else {
+  //     dispatch(filterByDefault());
+  //   }
+  // }, [selectedOption]);
+
+  console.log("filteredProducts => ", filteredProducts);
 
   const filterData = filteredProducts.length > 0 ? filteredProducts : products;
 
@@ -78,8 +95,23 @@ const Products = () => {
             <div className="products__filters-price">
               <h4>Price</h4>
               <div className="price-box">
-                <input className="price__item" type="text" />
-                <input className="price__item" type="text" />
+                <input 
+                type="text" 
+                name='min'
+                className="price__item" 
+                placeholder="from price"
+                value={priceValue?.min}
+                onChange={handlerChangePrice}
+                />
+                <input 
+                type="text" 
+                name='max'
+                className="price__item" 
+                placeholder="to price"
+                value={priceValue?.max}
+                onChange={handlerChangePrice} 
+                />
+                
               </div>
             </div>
 
@@ -103,13 +135,12 @@ const Products = () => {
           <div className="products-cards__list">
             {loading
               ? "Loading ..."
-              : filterData&&filterData.map((product) => (
+              : filterData &&
+                filterData.map((product) => (
                   <ProductCard key={product.id} product={product} />
-                ))
-            }
+                ))}
           </div>
 
-          {/* <ProductsAllFetch /> */}
         </div>
       </div>
     </section>

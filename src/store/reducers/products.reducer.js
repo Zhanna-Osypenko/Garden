@@ -5,6 +5,7 @@ import {
   FILTER_BY_PRICE,
   SET_SORT_BY,
   FILTER_BY_SALE,
+  FETCH_PRODUCTS_BY_CATEGORY,
 } from "store/actions/products/types";
 
 const initState = {
@@ -12,8 +13,9 @@ const initState = {
   filteredProducts: [],
   loading: false,
   error: null,
-  sortBy: {id: 0, label: "Default"},
-}
+  sortBy: { id: 0, label: "Default" },
+  currentCategoryId: null,
+};
 
 const filteredProductsByPrice = (products, priceValue) => {
   return products.filter(
@@ -23,7 +25,7 @@ const filteredProductsByPrice = (products, priceValue) => {
 };
 
 const sortProducts = (products, sortBy) => {
-  console.log('sortBy', sortBy);
+  console.log("sortBy", sortBy);
   if (sortBy.label === "Price Ascending") {
     return [...products].sort((a, b) => a.price - b.price);
   } else if (sortBy.label === "Price Descending") {
@@ -39,6 +41,7 @@ const productsReducer = (state = initState, action) => {
       return { ...state, loading: true };
 
     case FETCH_PRODUCTS_SUCCESS:
+      console.log("Success Fetch Products :", action.payload);
       return { ...state, loading: false, products: action.payload };
 
     case FETCH_PRODUCTS_FAILURE:
@@ -62,7 +65,9 @@ const productsReducer = (state = initState, action) => {
       return {
         ...state,
         // filteredProducts: sortedProducts,
-        filteredProducts: action.payload.isSale? sortedProducts.filter(item => item.discont_price !==null): sortedProducts,
+        filteredProducts: action.payload.isSale
+          ? sortedProducts.filter((item) => item.discont_price !== null)
+          : sortedProducts,
       };
 
     case FILTER_BY_SALE:
@@ -72,6 +77,15 @@ const productsReducer = (state = initState, action) => {
           (item) => item.discont_price !== null
         ),
       };
+
+    case FETCH_PRODUCTS_BY_CATEGORY:
+      console.log("categoryId in FETCH_PRODUCTS_BY_CATEGORY: ", action.payload);
+      return {
+        ...state,
+        currentCategoryId: action.payload.category.id, 
+        filteredProducts: action.payload.data, 
+      };
+    
 
     default:
       return state;

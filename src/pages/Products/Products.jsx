@@ -36,7 +36,7 @@ const options = [
 
 const Products = () => {
   const { loading, products, error, filteredProducts } = useSelector(
-    (state) => state
+    (state) => state.products
   );
 
   const [selectedOption, setSelectedOption] = useState(options[0]);
@@ -71,18 +71,6 @@ const Products = () => {
     console.log('event checkbox =>', event);
     dispatch(filterBySale(event.target.checked));
   };
-
-  // useEffect(() => {
-  //   if (selectedOption.label === "Price Ascending") {
-  //     dispatch(filterByAscending());
-  //   } else if (selectedOption.label === "Price Descending") {
-  //     dispatch(filterByDescending());
-  //   } else if (selectedOption.label === "Sale") {
-  //     dispatch(filterBySale());
-  //   } else {
-  //     dispatch(filterByDefault());
-  //   }
-  // }, [selectedOption]);
 
   console.log("filteredProducts => ", filteredProducts);
 

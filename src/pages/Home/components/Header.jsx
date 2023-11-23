@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 // import {HeaderLogo, CartHeaderIcon} from '../../../assets/images';
 
 function Header() {
@@ -7,7 +8,7 @@ function Header() {
       <div className="container">
         <div className="header__content">
           <h1>Sale<br />new season</h1>
-          <button>Sale</button>
+          <NavLink to="/sales">Sale</NavLink>
         </div>
       </div>
     </header>

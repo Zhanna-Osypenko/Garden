@@ -1,6 +1,4 @@
 .header {
-    // height: calc(100vh - 80px);
-    // height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,14 +35,16 @@
         }
       }
   
-      button{
+      a{
         display: block;
         width: 100%;
         padding: 14px;
         font-size: 24px;
         border-radius: 8px;
         border: $font-color-green;
+        background-color: $font-color-white;
   
+        text-decoration: none;
         color: $font-color-green;
         font-weight: 600;
         cursor: pointer;

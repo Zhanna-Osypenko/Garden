@@ -19,7 +19,7 @@ function HomeCatalogFetch() {
         <div className="home-catalog__content">
           <div className="home-catalog__title">
             <h2>Catalog</h2>
-            <NavLink className="home-catalog__title-btn" to="/catalog">
+            <NavLink className="home-catalog__title-btn" to="/category/all">
               All Categories
             </NavLink>
           </div>

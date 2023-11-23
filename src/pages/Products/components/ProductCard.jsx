@@ -1,7 +1,5 @@
 import React from "react";
 
-// function ProductCard({ product, backendURL }) 
-
 function ProductCard({ product }) {
   const hasDiscount = product.discont_price !== null;
   const backendURL = 'http://localhost:3333';

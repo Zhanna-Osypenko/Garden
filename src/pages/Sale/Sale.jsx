@@ -20,7 +20,7 @@ const options = [
 ];
 
 const Sale = () => {
-  const { loading, products, filteredProducts } = useSelector((state) => state);
+  const { loading, products, filteredProducts } = useSelector((state) => state.products);
 
   const [selectedOption, setSelectedOption] = useState(options[0]);
   const dispatch = useDispatch();

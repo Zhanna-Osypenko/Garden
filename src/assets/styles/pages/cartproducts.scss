@@ -58,14 +58,19 @@
         align-items: center;
         gap: 10px;
         background-color: rgb(226, 226, 226);
-        border-radius: 10px;
-        max-width: 110px;
+        border-radius: 12px;
+        max-width: 130px;
+
+        &>p{
+            font-size: 20px;
+        }
 
         button {
           flex-shrink: 0;
           padding: 10px 14px;
           background: none;
           border: none;
+          font-size: 24px;
         }
       }
     }
@@ -81,7 +86,7 @@
   }
 
   &__order-details {
-    padding: 12px;
+    padding: 18px;
     // background-color: yellowgreen;
     border-radius: 14px;
     border: 1px solid grey;
@@ -89,7 +94,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 24px;
 
     h4 {
       font-size: 28px;
@@ -99,12 +104,17 @@
     .cart-main__total-block {
       display: flex;
       justify-content: space-between;
+      font-weight: 600;
 
-      & > p:last-child {
+      & > p:nth-child(1) {
+        font-size: 20px;
         font-weight: 600;
       }
 
-     
+      & > p:last-child {
+        font-size: 24px;
+        font-weight: 600;
+      }
     }
 
      & > input {

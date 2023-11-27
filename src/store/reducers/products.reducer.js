@@ -6,6 +6,7 @@ import {
   SET_SORT_BY,
   FILTER_BY_SALE,
   FETCH_PRODUCTS_BY_CATEGORY,
+  FETCH_PRODUCT_BY_ID_SUCCESS,
 } from "store/actions/products/types";
 
 const initState = {
@@ -85,8 +86,10 @@ const productsReducer = (state = initState, action) => {
         currentCategoryId: action.payload.category.id, 
         filteredProducts: action.payload.data, 
       };
-    
 
+      case FETCH_PRODUCT_BY_ID_SUCCESS:
+      return { ...state, loading: false, product: action.payload };
+    
     default:
       return state;
   }

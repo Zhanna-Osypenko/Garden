@@ -13,7 +13,7 @@ const CartItem = () => {
 
             <div className="cart-item__content">
               <h2>199$</h2>
-              <button>To cart</button>
+              <button>Add to cart</button>
               <p className="cart-description">Description</p>
               <p>
                 Size, cm - 45x33 Material: frost-resistant polymer, reinforced

@@ -1,5 +1,6 @@
 import React from "react";
 import ProductsAllFetch from "./components/ProductsAllFetch";
+import { Link } from "react-router-dom";
 import { Dropdown } from "components";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,10 +28,6 @@ const options = [
   {
     id: 2,
     label: "Price Descending",
-  },
-  {
-    id: 3,
-    label: "Sale",
   },
 ];
 
@@ -138,7 +135,10 @@ const Products = () => {
               ? "Loading ..."
               : filterData &&
                 filterData.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                  <Link to={`/products/${product.id}`}>
+                    <ProductCard key={product.id} product={product} />
+                  </Link>
+                  
                 ))}
           </div>
         </div>

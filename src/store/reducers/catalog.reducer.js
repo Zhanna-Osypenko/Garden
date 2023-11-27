@@ -17,7 +17,7 @@ const catalogReducer = (state = initState, action) => {
       return { ...state, loading: true };
 
     case FETCH_CATALOG_SUCCESS:
-      console.log("Current Category ID after fetchCatalogSuccess:", action.payload.currentCategoryId);
+      console.log("Current Category ID after fetchCatalogSuccess:", action.payload);
       return { ...state, loading: false, catalog: action.payload };
 
     case FETCH_CATALOG_FAILURE:

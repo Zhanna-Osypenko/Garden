@@ -5,83 +5,75 @@ import { fetchProductsByCategory } from "store/actions/products/product.action";
 import { fetchCatalog } from "store/actions/catalog/catalog.action";
 import ProductCard from "./ProductCard";
 
+
 const ProductsByCategory = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { categoryId } = useParams();
+  console.log('=> useParams categoryId=>',categoryId);
   const { loading: productsLoading, products, error: productsError, filteredProducts } = useSelector((state) => state.products);
   const { loading: catalogLoading, catalog, error: catalogError, currentCategoryId, categories } = useSelector((state) => state.catalog);
 
+  
+
   useEffect(() => {
-    console.log("fetchCatalog effect");
+    console.log("11 fetchCatalog effect");
     dispatch(fetchCatalog());
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("fetchProductsByCategory effect");
+    console.log("22 fetchProductsByCategory effect");
+
     if (categoryId && !catalogLoading && !catalogError) {
       dispatch(fetchProductsByCategory(categoryId));
     } else {
-      if (categoryId !== undefined){
-        navigate("*");
+      if (categoryId) {
+        console.log("33 Navigating to /category/all");
+        navigate(`/category/${categoryId}`);
       }
-      
     }
   }, [dispatch, categoryId, catalogLoading, catalogError, navigate]);
 
-  console.log("filteredProducts: ", filteredProducts);
-  console.log("Products: ", products);
+  console.log("44 catalogLoading:", catalogLoading);
+  console.log("55 catalogError:", catalogError);
+  console.log("66 catalog:", catalog);
 
-  const currentCategory = categories ? categories.find(category => category.id === currentCategoryId) : null;
+  console.log("77 filteredProducts: ", filteredProducts);
+  console.log("88 Products: ", products);
+  console.log('000 categories', categories);
+
+  // const currentCategory = categories ? categories.find(category => category.id === currentCategoryId) : null;
+
+  // const currentCategory = catalog ? catalog.find(category =>  products.categoryId === category.id) : null;
+
+  const currentCategory =  catalog ? catalog.find(category => category.id == categoryId) : null;
+
+// const categoryName = currentCategory ? currentCategory.title : "Unknown Category";
+
+
+  console.log("99 currentCategory ===>>>", currentCategory);
 
   return (
-    <div className="products-cards__list">
-      <h2>{currentCategory ? currentCategory.title : (catalogLoading ? "Loading..." : "Category not found")}</h2>
+    <>
+    <div className="container">
+      <h2 className="products-cards__title">{currentCategory ? currentCategory.title : (catalogLoading ? "Loading..." : "CategoryName not found")}</h2>
+
+      <div className="products-cards__list">
+      
       {(productsLoading || catalogLoading) && <p>Loading...</p>}
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
+    </div>
+    
+      
+    
+    </>
+    
   );
 };
 
 
-// const ProductsByCategory = () => {
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const { categoryId } = useParams();
-//   const { loading, products, error, filteredProducts } = useSelector((state) => state.products);
-//   const { currentCategoryId, categories } = useSelector((state) => state.catalog);
-
-//   useEffect(() => {
-//     console.log('Current Category ID:', currentCategoryId);
-//     if (categoryId) {
-
-//       dispatch(fetchProductsByCategory(categoryId));
-//     } else {
-//       navigate("*");
-//     }
-//   }, [dispatch, categoryId, navigate]);
-
-//   console.log("filteredProducts: ", filteredProducts);
-//   console.log("Products: ", products);
-
-//   const currentCategory = categories ? categories.find(category => category.id === currentCategoryId) : null;
-
-//   useEffect(() => {
-//     console.log("currentCategory:", currentCategory);
-//   }, [currentCategory]);
-  
-
-//   return (
-//     <div className="products-cards__list">
-//       <h2>{currentCategory ? currentCategory.title : "Loading..."}</h2>
-//       {loading && <p>Loading...</p>}
-//       {products.map((product) => (
-//         <ProductCard key={product.id} product={product} />
-//       ))}
-//     </div>
-//   );
-// };
 
 export default ProductsByCategory;

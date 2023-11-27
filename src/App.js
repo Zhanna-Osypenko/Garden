@@ -9,6 +9,7 @@ import ProductsByCategory from 'pages/Products/components/ProductsByCategory';
 import { Routes, Route } from "react-router-dom";
 import CartItem from "pages/Cart/CartItem";
 import CartProducts from "pages/Cart/CartProducts";
+import CartProductDetails  from "pages/Cart/CartProductDetails";
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/sales" end element={<Sale />} />
           <Route path="/cartitem" end element={<CartItem />} />
           <Route path="/cartproducts" end element={<CartProducts />} />
+          <Route path="/products/:id" end element={<CartProductDetails />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

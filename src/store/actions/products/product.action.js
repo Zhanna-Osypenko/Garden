@@ -5,7 +5,7 @@ import {
   FILTER_BY_PRICE,
   SET_SORT_BY,
   FILTER_BY_SALE,
-  FETCH_PRODUCTS_BY_CATEGORY,
+  FETCH_PRODUCT_BY_ID_SUCCESS,
 } from "./types";
 
 export const fetchProductsRequest = () => ({
@@ -36,11 +36,6 @@ export const filterBySale = () => ({
   type: FILTER_BY_SALE,
 });
 
-// export const fetchProductsByCategory = (categoryId) => ({
-//   type: FETCH_PRODUCTS_BY_CATEGORY,
-//   payload: categoryId,
-// });
-
 export const fetchProductsByCategory = (categoryId) => {
   return async (dispatch) => {
     dispatch(fetchProductsRequest());
@@ -65,9 +60,6 @@ export const fetchProductsByCategory = (categoryId) => {
 };
 
 
-
-
-
 export const fetchProducts = () => {
   return async (dispatch) => {
     dispatch(fetchProductsRequest());
@@ -81,6 +73,34 @@ export const fetchProducts = () => {
       dispatch(fetchProductsSuccess(data));
     } catch (error) {
       dispatch(fetchProductsFailure("Products not found!"));
+    }
+  };
+};
+
+export const fetchProductByIdSuccess = (product) => ({
+  type: FETCH_PRODUCT_BY_ID_SUCCESS,
+  payload: product,
+});
+
+export const fetchProductById = (productId) => {
+  return async (dispatch) => {
+    dispatch(fetchProductsRequest());
+    console.log("fetchProductById in action");
+
+    try {
+      let response = await fetch(`http://localhost:3333/products/${productId}`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      let data = await response.json();
+      console.log("data try products/:productId => ", data);
+
+      dispatch(fetchProductByIdSuccess(data[0])); // data для передачи данных конкретного продукта
+    } catch (error) {
+      console.error("Error fetching product by ID:", error.message);
+      dispatch(fetchProductsFailure("Product not found!"));
     }
   };
 };

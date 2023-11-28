@@ -34,6 +34,7 @@ export const filterByPrice = (price, isSale) => ({
 
 export const filterBySale = () => ({
   type: FILTER_BY_SALE,
+
 });
 
 export const fetchProductsByCategory = (categoryId) => {

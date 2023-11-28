@@ -32,6 +32,7 @@ const Sale = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(filterBySale());
   }, []);
 
   useEffect(() => {
@@ -42,9 +43,10 @@ const Sale = () => {
     dispatch(setSortBy(selectedOption));
   }, [selectedOption]);
 
-  useEffect(() => {
-    dispatch(filterBySale(true)); 
-  }, []); 
+  // useEffect(() => {
+  //   // dispatch(filterBySale());
+  //   console.log('filter by =>'); 
+  // }, []); 
 
   const handlerChangePrice = (e) => {
     setPriceValue((prevState) => ({
@@ -53,11 +55,11 @@ const Sale = () => {
     }));
   };
 
-  console.log("filteredProducts => ", filteredProducts);
+  // console.log("filteredProducts => ", filteredProducts);
 
   const filterData = filteredProducts.length > 0 ? filteredProducts : products;
 
-  console.log("data in Products", filterData);
+  console.log("filterData sale => ", filterData);
 
   return (
     <section className="products">

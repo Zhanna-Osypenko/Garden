@@ -14,7 +14,6 @@ const initState = {
   filteredProducts: [],
   loading: false,
   error: null,
-  sortBy: { id: 0, label: "Default" },
   currentCategoryId: null,
 };
 
@@ -23,17 +22,6 @@ const filteredProductsByPrice = (products, priceValue) => {
     (product) =>
       product.price >= priceValue.min && product.price <= priceValue.max
   );
-};
-
-const sortProducts = (products, sortBy) => {
-  console.log("sortBy", sortBy);
-  if (sortBy.label === "Price Ascending") {
-    return [...products].sort((a, b) => a.price - b.price);
-  } else if (sortBy.label === "Price Descending") {
-    return [...products].sort((a, b) => b.price - a.price);
-  } else {
-    return products;
-  }
 };
 
 const productsReducer = (state = initState, action) => {
@@ -48,12 +36,12 @@ const productsReducer = (state = initState, action) => {
     case FETCH_PRODUCTS_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
-    case SET_SORT_BY:
-      return {
-        ...state,
-        sortBy: action.payload,
-        filteredProducts: sortProducts(state.filteredProducts, action.payload),
-      };
+    // case SET_SORT_BY:
+    //   return {
+    //     ...state,
+    //     sortBy: action.payload,
+    //     filteredProducts: sortProducts(state.filteredProducts, action.payload),
+    //   };
 
     case FILTER_BY_PRICE:
       const filteredProducts = filteredProductsByPrice(
@@ -61,14 +49,17 @@ const productsReducer = (state = initState, action) => {
         action.payload.price
       );
 
-      const sortedProducts = sortProducts(filteredProducts, state.sortBy);
+      // const sortedProducts = sortProducts(filteredProducts, state.sortBy);
 
       return {
         ...state,
         // filteredProducts: sortedProducts,
+        // filteredProducts: action.payload.isSale
+        //   ? sortedProducts.filter((item) => item.discont_price !== null)
+        //   : sortedProducts,
         filteredProducts: action.payload.isSale
-          ? sortedProducts.filter((item) => item.discont_price !== null)
-          : sortedProducts,
+          ? filteredProducts.filter((item) => item.discont_price !== null)
+          : filteredProducts,
       };
 
     case FILTER_BY_SALE:

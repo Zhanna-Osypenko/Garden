@@ -1,5 +1,4 @@
 import React from "react";
-import ProductsAllFetch from "./components/ProductsAllFetch";
 import { Link } from "react-router-dom";
 import { Dropdown } from "components";
 import { useState, useEffect } from "react";
@@ -7,11 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
   filterByPrice,
-  setSortBy,
   filterBySale,
-  filterByAscending,
-  filterByDescending,
-  filterByDefault,
 } from "store/actions/products/product.action";
 
 import ProductCard from "./components/ProductCard";
@@ -39,6 +34,17 @@ const Products = () => {
   const [selectedOption, setSelectedOption] = useState(options[0]);
   const dispatch = useDispatch();
 
+  const sortProducts = (products) => {
+    console.log("sortBy", selectedOption);
+    if (selectedOption.label === "Price Ascending") {
+      return [...products].sort((a, b) => a.price - b.price);
+    } else if (selectedOption.label === "Price Descending") {
+      return [...products].sort((a, b) => b.price - a.price);
+    } else {
+      return products;
+    }
+  };
+
   let [priceValue, setPriceValue] = useState({
     min: "0",
     max: "99999",
@@ -52,10 +58,6 @@ const Products = () => {
   useEffect(() => {
     dispatch(filterByPrice(priceValue));
   }, [priceValue]);
-
-  useEffect(() => {
-    dispatch(setSortBy(selectedOption));
-  }, [selectedOption]);
 
   const handlerChangePrice = (e) => {
     setPriceValue((prevState) => ({
@@ -71,7 +73,7 @@ const Products = () => {
 
   console.log("filteredProducts => ", filteredProducts);
 
-  const filterData = filteredProducts.length > 0 ? filteredProducts : products;
+  const filterData = sortProducts(filteredProducts.length > 0 ? filteredProducts : products);
 
   console.log("data in Products", filterData);
 

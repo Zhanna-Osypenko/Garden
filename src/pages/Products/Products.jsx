@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { Dropdown } from "components";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchProducts,
-  filterByPrice,
-  filterBySale,
-} from "store/actions/products/product.action";
+// import {
+//   fetchProducts,
+//   filterByPrice,
+//   filterBySale,
+// } from "store/actions/products/product.action";
+
+import { fetchProducts, filterByPrice, filterBySale } from "store/toolkit/products";
+
 
 import ProductCard from "./components/ProductCard";
 
@@ -30,6 +33,8 @@ const Products = () => {
   const { loading, products, error, filteredProducts } = useSelector(
     (state) => state.products
   );
+
+  
 
   const [selectedOption, setSelectedOption] = useState(options[0]);
   const dispatch = useDispatch();
@@ -55,6 +60,9 @@ const Products = () => {
     // console.log("useEffect loading&products => ", loading, products);
   }, []);
 
+  console.log("Products:", products);
+  console.log("Error:", error);
+
   useEffect(() => {
     dispatch(filterByPrice(priceValue));
   }, [priceValue]);
@@ -67,9 +75,10 @@ const Products = () => {
   };
 
   const handleDiscountCheckboxChange = (event) => {
-    console.log('event checkbox =>', event);
+    console.log('event checkbox =>', event.target.checked);
     dispatch(filterBySale(event.target.checked));
   };
+
 
   console.log("filteredProducts => ", filteredProducts);
 

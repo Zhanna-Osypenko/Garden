@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchCatalog } from "store/actions/catalog/catalog.action";
+// import { fetchCatalog } from "store/actions/catalog/catalog.action";
+import { fetchCatalog } from "store/toolkit/catalog";
 import { fetchProductsByCategory } from "store/actions/products/product.action";
 
 function MainCatalogPage2() {

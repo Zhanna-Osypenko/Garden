@@ -3,7 +3,6 @@ import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
   FILTER_BY_PRICE,
-  SET_SORT_BY,
   FILTER_BY_SALE,
   FETCH_PRODUCTS_BY_CATEGORY,
   FETCH_PRODUCT_BY_ID_SUCCESS,
@@ -36,39 +35,31 @@ const productsReducer = (state = initState, action) => {
     case FETCH_PRODUCTS_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
-    // case SET_SORT_BY:
-    //   return {
-    //     ...state,
-    //     sortBy: action.payload,
-    //     filteredProducts: sortProducts(state.filteredProducts, action.payload),
-    //   };
-
     case FILTER_BY_PRICE:
+      console.log("FILTER_BY_PRICE payload:", action.payload);
+
       const filteredProducts = filteredProductsByPrice(
         state.products,
         action.payload.price
       );
 
-      // const sortedProducts = sortProducts(filteredProducts, state.sortBy);
-
       return {
         ...state,
-        // filteredProducts: sortedProducts,
-        // filteredProducts: action.payload.isSale
-        //   ? sortedProducts.filter((item) => item.discont_price !== null)
-        //   : sortedProducts,
         filteredProducts: action.payload.isSale
           ? filteredProducts.filter((item) => item.discont_price !== null)
           : filteredProducts,
       };
+      
+      
+  case FILTER_BY_SALE:
+    console.log('checkbox => ', action.payload);
+    return {
+      ...state,
+      filteredProducts: action.payload
+        ? [...state.products].filter((item) => item.discont_price !== null)
+        : state.products,
+    };
 
-    case FILTER_BY_SALE:
-      return {
-        ...state,
-        filteredProducts: [...state.products].filter(
-          (item) => item.discont_price !== null
-        ),
-      };
 
     case FETCH_PRODUCTS_BY_CATEGORY:
       console.log("categoryId in FETCH_PRODUCTS_BY_CATEGORY: ", action.payload);

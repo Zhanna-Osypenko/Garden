@@ -32,9 +32,9 @@ export const filterByPrice = (price, isSale) => ({
   payload: { price, isSale },
 });
 
-export const filterBySale = () => ({
+export const filterBySale = (isChecked) => ({
   type: FILTER_BY_SALE,
-
+  payload: isChecked,
 });
 
 export const fetchProductsByCategory = (categoryId) => {
@@ -59,7 +59,6 @@ export const fetchProductsByCategory = (categoryId) => {
     }
   };
 };
-
 
 export const fetchProducts = () => {
   return async (dispatch) => {

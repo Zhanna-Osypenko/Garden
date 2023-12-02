@@ -75,11 +75,12 @@ const Products = () => {
 
   const handleDiscountCheckboxChange = (event) => {
     console.log('event checkbox =>', event.target.checked);
-  
-    const isSale = event.target.checked;
-  
-    dispatch(filterBySale(isSale));
+    dispatch(filterBySale({
+      isSale: event.target.checked,
+      priceValue,
+    }));
   };
+  
   
 
 

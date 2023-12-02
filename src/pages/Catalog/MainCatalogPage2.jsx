@@ -11,6 +11,7 @@ function MainCatalogPage2() {
     process.env.REACT_APP_BACKEND_URL || "http://localhost:3333";
   const dispatch = useDispatch();
   const { catalog, loading, error } = useSelector((state) => state.catalog);
+  const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(fetchCatalog());

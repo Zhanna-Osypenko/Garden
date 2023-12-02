@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 
 const ProductsCategories = () => {
@@ -33,8 +33,12 @@ const ProductsCategories = () => {
 
         <div className="products-cards__list">
           {!loading
-            ? products && products.data && products.data.map((product) => (
-                <ProductCard key={product.id} product={product} />
+            ? products &&
+              products.data &&
+              products.data.map((product) => (
+                <Link to={`/products/${product.id}`}>
+                  <ProductCard key={product.id} product={product} />
+                </Link>
               ))
             : "Loading..."}
         </div>

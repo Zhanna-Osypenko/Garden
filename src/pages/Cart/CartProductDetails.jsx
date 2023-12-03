@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { increment } from "store/toolkit/cart";
 import { fetchProductById } from "store/toolkit/products";
+import { addToCart } from "store/toolkit/products"; 
 
 const CartProductDetails = () => {
   const { id } = useParams();
@@ -13,10 +13,18 @@ const CartProductDetails = () => {
 
   useEffect(() => {
     console.log("111Product ID:", id);
-    dispatch(fetchProductById(id));
+    dispatch(fetchProductById(id))
+      .catch((error) => {
+        console.error('Error fetching product:', error);
+      });
   }, [dispatch, id]);
 
+  
   console.log("222Product in CartProductDetails:", currentProduct);
+  
+  if (!currentProduct) {
+    return <p>Loading...</p>;
+  }
 
   if (loading) {
     return <p>Loading...</p>;
@@ -26,11 +34,13 @@ const CartProductDetails = () => {
     return <p>Error: {error}</p>;
   }
 
-  let addToCart = (event) => {
-    event.preventDefault();
-    let t = event.target;
-    dispatch(increment(t.getAttribute('data-key')));
+
+  let handlerAddToCart = () => {
+    console.log('==> handlerAddToCart currentProduct:', currentProduct);
+    dispatch(addToCart(currentProduct));
   }
+  
+  
 
   return (
     <div className="container">
@@ -48,7 +58,7 @@ const CartProductDetails = () => {
 
               <div className="cart-item__content">
                 <h2>{`${currentProduct.price}$`}</h2>
-                <button data-key={currentProduct.id} onClick={addToCart}>
+                <button data-key={currentProduct.id} onClick={handlerAddToCart}>
                   Add to cart
                 </button>
                 <p className="cart-description">Description</p>

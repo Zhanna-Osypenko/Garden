@@ -62,7 +62,7 @@ function Nav() {
                 );
               })}
             </ul>
-            <Link to="/cartproducts">
+            <Link to="/cart">
               <div className="navbar__right-cart">
                 <img src="./Header/header12.svg" alt="cart" />
               </div>

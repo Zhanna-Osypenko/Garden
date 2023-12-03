@@ -75,19 +75,6 @@ const productsSlice = createSlice({
 
     // ========= Cart reducer ==========
 
-    // addToCart: (state, action) => {
-    //   let cartProducts = localStorage.getItem('cart')
-    //   state.currentProduct = action.payload;
-
-    //   if (cartProducts){
-
-    //   }else{
-    //     localStorage.setItem('cart',JSON.stringify([state.currentProduct]))
-    //   }
-
-    //   state.cart.push(state.currentProduct);
-    // },
-
     addToCart: (state, action) => {
       const product = action.payload;
     
@@ -121,6 +108,33 @@ const productsSlice = createSlice({
       console.log('state.cart:', state.cart);
       console.log('00 = localStorage (after):', localStorage.getItem('cart'));
     },
+
+    updateCartItemQuantity: (state, action) => {
+      const { productId, quantity } = action.payload;
+
+      const existingItemIndex = state.cart.findIndex(
+        (item) => item && item.id === productId
+      );
+
+      if (existingItemIndex !== -1) {
+        // Если товар уже есть в корзине, обновляем количество
+        state.cart[existingItemIndex].quantity = quantity;
+
+        // Если количество стало 0, удаляем товар из корзины
+        if (quantity === 0) {
+          state.cart.splice(existingItemIndex, 1);
+        }
+      } else {
+        // Если товара еще нет в корзине, добавляем его
+        const product = state.products.find(
+          (item) => item && item.id === productId
+        );
+        if (product) {
+          state.cart.push({ ...product, quantity });
+        }
+      }
+    
+  },
     
     
 
@@ -154,5 +168,5 @@ const productsSlice = createSlice({
 });
 
 // export const selectProducts = state => state.products.products;
-export const { filterByPrice, filterBySale, addToCart } = productsSlice.actions;
+export const { filterByPrice, filterBySale, addToCart, updateCartItemQuantity } = productsSlice.actions;
 export default productsSlice.reducer;

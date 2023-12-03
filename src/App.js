@@ -7,7 +7,7 @@ import ErrorPage from "pages/ErrorPage/ErrorPage";
 import MainCatalogPage2 from "pages/Catalog/MainCatalogPage2";
 import ProductsByCategory from 'pages/Products/components/ProductsByCategory';
 import CartItem from "pages/Cart/CartItem";
-import CartProducts from "pages/Cart/CartProducts";
+import CartProducts from "pages/Cart/Cart";
 import CartProductDetails  from "pages/Cart/CartProductDetails";
 import ProductsCategories from "pages/Products/components/ProductsCategories";
 

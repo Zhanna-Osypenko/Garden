@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Nav() {
   const menuItems = [
@@ -61,10 +62,11 @@ function Nav() {
                 );
               })}
             </ul>
-            <div className="navbar__right-cart">
-              {/* <img src="./images/Home12.svg" alt="cart" /> */}
-              <img src="./Header/header12.svg" alt="cart" />
-            </div>
+            <Link to="/cartproducts">
+              <div className="navbar__right-cart">
+                <img src="./Header/header12.svg" alt="cart" />
+              </div>
+            </Link>
           </div>
         </div>
       </div>

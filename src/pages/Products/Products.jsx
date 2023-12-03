@@ -51,7 +51,6 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
-    // console.log("useEffect loading&products => ", loading, products);
   }, []);
 
   console.log("Products:", products);

@@ -1,8 +1,24 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCart } from "store/toolkit/cart";
+import { fetchProducts } from "store/toolkit/products";
 
-const CartProducts = () => {
+const Cart = () => {
+  const cart = useSelector(selectCart);
+  const { loading, products, error, filteredProducts } = useSelector(
+    (state) => state.products
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  console.log("cart products => ", products);
+
   return (
-    <div>
+    <section className="cart">
       <div className="container">
         <section className="cart-main">
           <h1>Shopping cart</h1>
@@ -67,8 +83,8 @@ const CartProducts = () => {
           </div>
         </section>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default CartProducts;
+export default Cart;

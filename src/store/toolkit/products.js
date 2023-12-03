@@ -50,36 +50,27 @@ const productsSlice = createSlice({
 
     state.filteredProducts = filteredProducts;
   },
-
-  // filterBySale: (state) => {
-  //   state.isSale = !state.isSale;
-  //   const filteredProducts = state.products.filter(
-  //     (product) => !state.isSale || product.discont_price !== null
-  //   );
-
-  //   state.filteredProducts = filteredProducts;
-  // },  
-
-  // filterBySale: (state, action) => {
-  //   const { isSale, priceValue } = action.payload || {}; // добавим проверку на существование action.payload
-  //   state.isSale = isSale || state.isSale; // если isSale undefined, используем текущее значение state.isSale
   
-  //   const { min, max } = priceValue || {}; // добавим проверку на существование priceValue
+  // filterBySale: (state, action) => {
+  //   const { isSale, priceValue } = action.payload;
+  //   state.isSale = isSale;
+  
+  //   const { min, max } = priceValue;
   //   const filteredProducts = state.products.filter(
   //     (product) =>
   //       (!state.isSale || product.discont_price !== null) &&
-  //       (min === undefined || product.price >= parseFloat(min)) &&
-  //       (max === undefined || product.price <= parseFloat(max))
+  //       (min === "" || product.price >= min) &&
+  //       (max === "" || product.price <= max)
   //   );
   
   //   state.filteredProducts = filteredProducts;
   // },
-  
+
   filterBySale: (state, action) => {
-    const { isSale, priceValue } = action.payload;
+    const { isSale, priceValue } = action.payload || {};
     state.isSale = isSale;
   
-    const { min, max } = priceValue;
+    const { min, max } = priceValue || {};
     const filteredProducts = state.products.filter(
       (product) =>
         (!state.isSale || product.discont_price !== null) &&
@@ -90,8 +81,7 @@ const productsSlice = createSlice({
     state.filteredProducts = filteredProducts;
   },
   
-  
-    
+
   },
 
   extraReducers: {
@@ -121,5 +111,6 @@ const productsSlice = createSlice({
   },
 });
 
+export const selectProducts = state => state.products.products;
 export const { filterByPrice, filterBySale } = productsSlice.actions;
 export default productsSlice.reducer;

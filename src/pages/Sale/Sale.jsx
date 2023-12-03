@@ -22,7 +22,8 @@ const options = [
 ];
 
 const Sale = () => {
-  const { loading, products, filteredProducts } = useSelector((state) => state.products);
+  const { loading, products, filteredProducts, isSale } = useSelector((state) => state.products);
+
 
   const [selectedOption, setSelectedOption] = useState(options[0]);
   const dispatch = useDispatch();
@@ -49,13 +50,17 @@ const Sale = () => {
   }, []);
 
   useEffect(() => {
-    // dispatch(filterByPrice(priceValue, true));
     dispatch(filterByPrice({ ...priceValue, isSale: true }));
   }, [priceValue]);
 
+  // useEffect(() => {
+  //   dispatch(filterBySale());  
+  // }, []); 
+
   useEffect(() => {
-    dispatch(filterBySale());
-  }, []); 
+    dispatch(filterBySale({ isSale, priceValue }));  
+  }, [isSale, priceValue]); 
+
 
   const handlerChangePrice = (e) => {
     setPriceValue((prevState) => ({
@@ -66,11 +71,15 @@ const Sale = () => {
 
   // console.log("filteredProducts => ", filteredProducts);
 
-  // const filterData = sortProducts(filteredProducts.length > 0 ? filteredProducts : products);
+  // const filterData = sortProducts(filteredProducts);
+
+  // console.log("333filterData sale => ", filterData);
 
   const filterData = sortProducts(filteredProducts);
 
-  console.log("333filterData sale => ", filterData);
+  const discountedProducts = filterData.filter((product) => product.discont_price !== null);
+  
+  console.log("Discounted Products => ", discountedProducts);
 
   return (
     <section className="products">
@@ -119,8 +128,8 @@ const Sale = () => {
           <div className="products-cards__list">
             {loading
               ? "Loading ..."
-              : filterData &&
-                filterData.map((product) => (
+              : discountedProducts &&
+              discountedProducts.map((product) => (
                   <Link to={`/products/${product.id}`}>
                     <ProductCard key={product.id} product={product} />
                   </Link>

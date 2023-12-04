@@ -88,7 +88,7 @@ const Cart = () => {
                       >
                         <img
                           className="deletecart-img"
-                          src="./Cart/close.jpg"
+                          src="./Cart/deletecart2.jpg"
                           alt="delcart"
                         />
                       </div>

@@ -41,7 +41,6 @@ const CartProductDetails = () => {
   }
   
   
-
   return (
     <div className="container">
       <section className="cart-item">

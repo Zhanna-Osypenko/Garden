@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux"; 
+import { useEffect } from "react";
 
 function Nav() {
   const menuItems = [
@@ -23,10 +25,17 @@ function Nav() {
   ];
 
   const [clicked, setClicked] = useState(false);
+  const cart = useSelector((state) => state.products.cart);
+  const [cartTotal, setCartTotal] = useState(0);
 
   const handleClick = () => {
     setClicked(!clicked);
   };
+
+  useEffect(() => {
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    setCartTotal(totalItems);
+  }, [cart]);
 
   const setActiveLink = ({ isActive }) =>
     isActive ? "nav-links nav-links--active" : "nav-links";
@@ -65,6 +74,7 @@ function Nav() {
             <Link to="/cart">
               <div className="navbar__right-cart">
                 <img src="./Header/header12.svg" alt="cart" />
+                {cartTotal > 0 && <span className="cart-count">{cartTotal}</span>}
               </div>
             </Link>
           </div>

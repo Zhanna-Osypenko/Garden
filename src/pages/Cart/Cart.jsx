@@ -22,6 +22,15 @@ const Cart = () => {
     }, 0);
   };
 
+  const calculateTotalQuantity = () => {
+    return cart.reduce((totalQuantity, item) => {
+      if (item && item.quantity) {
+        return totalQuantity + item.quantity;
+      }
+      return totalQuantity;
+    }, 0);
+  };
+
   const handleQuantityChange = (productId, newQuantity) => {
     // Отправляем действие для обновления количества товара в корзине
     dispatch(updateCartItemQuantity({ productId, quantity: newQuantity }));
@@ -78,6 +87,7 @@ const Cart = () => {
                 <p>Total</p>
                 <p>{`${calculateTotal()}$`}</p>
               </div>
+              <p>{`Total Quantity: ${calculateTotalQuantity()}`}</p>
               <input type="tel" placeholder="+49" />
               <button>Order</button>
             </div>

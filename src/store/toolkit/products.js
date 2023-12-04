@@ -75,10 +75,42 @@ const productsSlice = createSlice({
 
     // ========= Cart reducer ==========
 
+    // addToCart: (state, action) => {
+    //   const product = action.payload;
+    
+    //   console.log('product:', product);
+    
+    //   if (!product || !product.id) {
+    //     console.error('Error: Invalid product data.');
+    //     return;
+    //   }
+    
+    //   // Получаем текущую корзину из LocalStorage
+    //   let cartProducts = JSON.parse(localStorage.getItem('cart'));
+    
+    //   console.log('00 = localStorage (before):', localStorage.getItem('cart'));
+    
+    //   // Добавим проверку на null
+    //   if (!cartProducts) {
+    //     cartProducts = [];
+    //   }
+    
+    //   // Добавим новый товар в корзину
+    //   cartProducts.push({ ...product, quantity: 1 });
+    
+    //   // Обновляем состояние корзины
+    //   state.cart = cartProducts;
+    
+    //   // Сохраняем состояние корзины в LocalStorage
+    //   localStorage.setItem('cart', JSON.stringify(cartProducts));
+    
+    //   // Выводим в консоль текущее состояние корзины
+    //   console.log('state.cart:', state.cart);
+    //   console.log('00 = localStorage (after):', localStorage.getItem('cart'));
+    // },
+    
     addToCart: (state, action) => {
       const product = action.payload;
-    
-      console.log('product:', product);
     
       if (!product || !product.id) {
         console.error('Error: Invalid product data.');
@@ -88,15 +120,21 @@ const productsSlice = createSlice({
       // Получаем текущую корзину из LocalStorage
       let cartProducts = JSON.parse(localStorage.getItem('cart'));
     
-      console.log('00 = localStorage (before):', localStorage.getItem('cart'));
-    
       // Добавим проверку на null
       if (!cartProducts) {
         cartProducts = [];
       }
     
-      // Добавим новый товар в корзину
-      cartProducts.push({ ...product, quantity: 1 });
+      // Проверяем, есть ли товар уже в корзине
+      const existingItemIndex = cartProducts.findIndex(item => item && item.id === product.id);
+    
+      if (existingItemIndex !== -1) {
+        // Если товар уже есть в корзине, обновляем количество
+        cartProducts[existingItemIndex].quantity += 1;
+      } else {
+        // Если товара еще нет в корзине, добавляем его
+        cartProducts.push({ ...product, quantity: 1 });
+      }
     
       // Обновляем состояние корзины
       state.cart = cartProducts;
@@ -108,7 +146,8 @@ const productsSlice = createSlice({
       console.log('state.cart:', state.cart);
       console.log('00 = localStorage (after):', localStorage.getItem('cart'));
     },
-
+    
+    
     updateCartItemQuantity: (state, action) => {
       const { productId, quantity } = action.payload;
 

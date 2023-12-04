@@ -75,39 +75,6 @@ const productsSlice = createSlice({
 
     // ========= Cart reducer ==========
 
-    // addToCart: (state, action) => {
-    //   const product = action.payload;
-    
-    //   console.log('product:', product);
-    
-    //   if (!product || !product.id) {
-    //     console.error('Error: Invalid product data.');
-    //     return;
-    //   }
-    
-    //   // Получаем текущую корзину из LocalStorage
-    //   let cartProducts = JSON.parse(localStorage.getItem('cart'));
-    
-    //   console.log('00 = localStorage (before):', localStorage.getItem('cart'));
-    
-    //   // Добавим проверку на null
-    //   if (!cartProducts) {
-    //     cartProducts = [];
-    //   }
-    
-    //   // Добавим новый товар в корзину
-    //   cartProducts.push({ ...product, quantity: 1 });
-    
-    //   // Обновляем состояние корзины
-    //   state.cart = cartProducts;
-    
-    //   // Сохраняем состояние корзины в LocalStorage
-    //   localStorage.setItem('cart', JSON.stringify(cartProducts));
-    
-    //   // Выводим в консоль текущее состояние корзины
-    //   console.log('state.cart:', state.cart);
-    //   console.log('00 = localStorage (after):', localStorage.getItem('cart'));
-    // },
     
     addToCart: (state, action) => {
       const product = action.payload;
@@ -174,8 +141,13 @@ const productsSlice = createSlice({
       }
     
   },
-    
-    
+
+  removeCartItem: (state, action) => {
+    const productId = action.payload;
+    const updatedCart = state.cart.filter(item => item.id !== productId);
+    state.cart = updatedCart;
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  },
 
   },
 
@@ -203,9 +175,11 @@ const productsSlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
     },
+
+
   },
 });
 
 // export const selectProducts = state => state.products.products;
-export const { filterByPrice, filterBySale, addToCart, updateCartItemQuantity } = productsSlice.actions;
+export const { filterByPrice, filterBySale, addToCart, updateCartItemQuantity, removeCartItem } = productsSlice.actions;
 export default productsSlice.reducer;

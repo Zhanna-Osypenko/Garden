@@ -1,9 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "store/toolkit/products";
-import { updateCartItemQuantity } from "store/toolkit/products";
-
+import { fetchProducts,updateCartItemQuantity, removeCartItem } from "store/toolkit/products";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state.products);
@@ -23,17 +21,24 @@ const Cart = () => {
   };
 
   const calculateTotalQuantity = () => {
-    return cart.reduce((totalQuantity, item) => {
+    const totalQuantity = cart.reduce((total, item) => {
       if (item && item.quantity) {
-        return totalQuantity + item.quantity;
+        return total + item.quantity;
       }
-      return totalQuantity;
+      return total;
     }, 0);
+  
+    return Number(totalQuantity.toFixed(2));
   };
+  
+  
 
   const handleQuantityChange = (productId, newQuantity) => {
-    // Отправляем действие для обновления количества товара в корзине
     dispatch(updateCartItemQuantity({ productId, quantity: newQuantity }));
+  };
+
+  const handleRemoveCartItem = (productId) => {
+    dispatch(removeCartItem(productId));
   };
 
   return (
@@ -47,34 +52,55 @@ const Cart = () => {
                 item ? (
                   <div className="cart-main__list-item" key={item.id}>
                     <div className="cart__img-box">
-                      {item.image && <img src={`http://localhost:3333${item.image}`} alt={item.title} />}
+                      {item.image && (
+                        <img
+                          src={`http://localhost:3333${item.image}`}
+                          alt={item.title}
+                        />
+                      )}
                     </div>
                     <div className="cart__btn-block">
                       <p>{item.title}</p>
                       <div className="cart__count">
-                      <button
-                        onClick={() =>
-                          handleQuantityChange(item.id, item.quantity + 1)
-                        }
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(item.id, item.quantity + 1)
+                          }
+                        >
+                          +
+                        </button>
+                        <p>{item.quantity}</p>
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(
+                              item.id,
+                              Math.max(1, item.quantity - 1)
+                            )
+                          }
+                        >
+                          -
+                        </button>
+                      </div>
+
+                      <div
+                        className="deletecart"
+                        onClick={() => handleRemoveCartItem(item.id)}
                       >
-                        +
-                      </button>
-                      <p>{item.quantity}</p>
-                      <button
-                        onClick={() =>
-                          handleQuantityChange(
-                            item.id,
-                            Math.max(1, item.quantity - 1)
-                          )
-                        }
-                      >
-                        -
-                      </button>
+                        <img
+                          className="deletecart-img"
+                          src="./Cart/close.jpg"
+                          alt="delcart"
+                        />
                       </div>
                     </div>
-                    <p className="cart__price">{`${item.price}$`}</p>
-                    {item.discont_price && (
-                      <p className="cart__discount-price">{`${item.discont_price}$`}</p>
+
+                    {item.discont_price ? (
+                      <>
+                        <p className="cart__price">{`${item.discont_price}$`}</p>
+                        <p className="cart__discount-price">{`${item.price}$`}</p>
+                      </>
+                    ) : (
+                      <p className="cart__price">{`${item.price}$`}</p>
                     )}
                   </div>
                 ) : null
@@ -99,4 +125,3 @@ const Cart = () => {
 };
 
 export default Cart;
-

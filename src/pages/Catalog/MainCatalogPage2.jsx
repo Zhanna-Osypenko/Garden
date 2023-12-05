@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { fetchCatalog } from "store/actions/catalog/catalog.action";
+import { NavLink } from "react-router-dom";
 import { fetchCatalog } from "store/toolkit/catalog";
-import { fetchProductsByCategory } from "store/actions/products/product.action";
 
 function MainCatalogPage2() {
   const navigate = useNavigate();
@@ -16,22 +15,28 @@ function MainCatalogPage2() {
   useEffect(() => {
     dispatch(fetchCatalog());
   }, []);
-  
+
   console.log("catalog =>", catalog);
 
   const handleCategoryClick = (categoryId) => {
     navigate(`/category/${categoryId}`);
   };
-  
 
   return (
     <>
       <div className="home-catalog">
         <div className="container">
           <div className="home-catalog__content">
-            <div className="home-catalog__title">
-              <h2>Catalog</h2>
+            <h2>Catalog</h2>
+            <div className="tag">
+              <span className="tag__item">
+                <NavLink className="products-cards__title-link" to="/">
+                  Home
+                </NavLink>
+              </span>
+              /<span className="tag__item tag__item--active">Catalog</span>
             </div>
+
             <div className="main-catalog__carts">
               {catalog.map((category) => (
                 <div

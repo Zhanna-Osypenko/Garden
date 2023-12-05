@@ -84,32 +84,24 @@ const productsSlice = createSlice({
         return;
       }
     
-      // Получаем текущую корзину из LocalStorage
       let cartProducts = JSON.parse(localStorage.getItem('cart'));
     
-      // Добавим проверку на null
       if (!cartProducts) {
         cartProducts = [];
       }
     
-      // Проверяем, есть ли товар уже в корзине
       const existingItemIndex = cartProducts.findIndex(item => item && item.id === product.id);
     
       if (existingItemIndex !== -1) {
-        // Если товар уже есть в корзине, обновляем количество
         cartProducts[existingItemIndex].quantity += 1;
       } else {
-        // Если товара еще нет в корзине, добавляем его
         cartProducts.push({ ...product, quantity: 1 });
       }
     
-      // Обновляем состояние корзины
       state.cart = cartProducts;
     
-      // Сохраняем состояние корзины в LocalStorage
       localStorage.setItem('cart', JSON.stringify(cartProducts));
-    
-      // Выводим в консоль текущее состояние корзины
+  
       console.log('state.cart:', state.cart);
       console.log('00 = localStorage (after):', localStorage.getItem('cart'));
     },
@@ -123,15 +115,13 @@ const productsSlice = createSlice({
       );
 
       if (existingItemIndex !== -1) {
-        // Если товар уже есть в корзине, обновляем количество
+ 
         state.cart[existingItemIndex].quantity = quantity;
 
-        // Если количество стало 0, удаляем товар из корзины
         if (quantity === 0) {
           state.cart.splice(existingItemIndex, 1);
         }
       } else {
-        // Если товара еще нет в корзине, добавляем его
         const product = state.products.find(
           (item) => item && item.id === productId
         );
@@ -180,6 +170,6 @@ const productsSlice = createSlice({
   },
 });
 
-// export const selectProducts = state => state.products.products;
+
 export const { filterByPrice, filterBySale, addToCart, updateCartItemQuantity, removeCartItem } = productsSlice.actions;
 export default productsSlice.reducer;

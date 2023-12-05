@@ -13,12 +13,14 @@ const Cart = () => {
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
-      if (item && item.price && item.quantity) {
-        return total + item.price * item.quantity;
+      if (item && item.quantity) {
+        const priceToUse = item.discont_price ? item.discont_price : item.price;
+        return total + priceToUse * item.quantity;
       }
       return total;
-    }, 0);
+    }, 0).toFixed(2);
   };
+  
 
   const calculateTotalQuantity = () => {
     const totalQuantity = cart.reduce((total, item) => {
@@ -96,11 +98,11 @@ const Cart = () => {
 
                     {item.discont_price ? (
                       <>
-                        <p className="cart__price">{`${item.discont_price}$`}</p>
-                        <p className="cart__discount-price">{`${item.price}$`}</p>
+                        <p className="cart__price">{`${item.discont_price*item.quantity}$`}</p>
+                        <p className="cart__discount-price">{`${item.price*item.quantity}$`}</p>
                       </>
                     ) : (
-                      <p className="cart__price">{`${item.price}$`}</p>
+                      <p className="cart__price">{`${item.price*item.quantity}$`}</p>
                     )}
                   </div>
                 ) : null

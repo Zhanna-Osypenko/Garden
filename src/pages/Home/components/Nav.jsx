@@ -71,7 +71,7 @@ function Nav() {
                 );
               })}
             </ul>
-            <Link to="/cart">
+            <Link className="navbar__right-cart__link" to="/cart">
               <div className="navbar__right-cart">
                 <img src="./Header/header12.svg" alt="cart" />
                 {cartTotal > 0 && <span className="cart-count">{cartTotal}</span>}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { fetchProducts, filterByPrice, filterBySale } from "store/toolkit/products";
 
 import ProductCard from "../Products/components/ProductCard";
@@ -87,7 +87,11 @@ const Sale = () => {
         <div className="products__content">
           <h1>All Sales</h1>
           <div className="tag">
-            <span className="tag__item">Home</span>/
+            <span className="tag__item">
+            <NavLink className="products-cards__title-link" to="/">
+            Home
+          </NavLink>
+            </span>/
             <span className="tag__item tag__item--active">All Sales</span>
           </div>
 

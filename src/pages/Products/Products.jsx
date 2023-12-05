@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Dropdown } from "components";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -86,7 +86,7 @@ const Products = () => {
   console.log("filteredProducts => ", filteredProducts);
 
   const filterData = sortProducts(filteredProducts.length > 0 ? filteredProducts : products);
-  // const filterData = sortProducts(isSale ? filteredProducts : products);
+  
 
 
   console.log("data in Products", filterData);
@@ -98,7 +98,11 @@ const Products = () => {
           <h1>All products</h1>
 
           <div className="tag">
-            <span className="tag__item">Home</span>/
+            <span className="tag__item">
+            <NavLink className="products-cards__title-link" to="/">
+            Home
+          </NavLink>
+              </span>/
             <span className="tag__item tag__item--active">All products</span>
           </div>
 

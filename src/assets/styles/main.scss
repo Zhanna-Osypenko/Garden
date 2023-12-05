@@ -2,18 +2,17 @@
 @import "variables";
 @import "mixin";
 
-@import '../styles/pages/nav.scss';
-@import '../styles/pages/homeheader.scss';
-@import '../styles/pages/homecatalog.scss';
-@import '../styles/pages/homediscount.scss';
-@import '../styles/pages/homesale.scss';
-@import '../styles/pages/footer.scss';
-@import '../styles/pages/errorpage.scss';
-@import '../styles/pages/maincatalog.scss';
-@import '../styles/pages/products.scss';
-@import '../styles/pages/cartitem.scss';
-@import '../styles/pages/cartproducts.scss';
-
+@import "../styles/pages/nav.scss";
+@import "../styles/pages/homeheader.scss";
+@import "../styles/pages/homecatalog.scss";
+@import "../styles/pages/homediscount.scss";
+@import "../styles/pages/homesale.scss";
+@import "../styles/pages/footer.scss";
+@import "../styles/pages/errorpage.scss";
+@import "../styles/pages/maincatalog.scss";
+@import "../styles/pages/products.scss";
+@import "../styles/pages/cartitem.scss";
+@import "../styles/pages/cartproducts.scss";
 
 * {
   margin: 0;
@@ -28,30 +27,6 @@ ol {
   list-style: none;
 }
 
-// ========== link a start =========
-
-// a {
-// 	position: relative;
-// 	text-decoration: none;
-// }
-
-// a::before {
-// 	content: '';
-// 	position: absolute;
-// 	left: 0; bottom: -5px;
-// 	width: 0;
-// 	height: 1px;
-// 	background-color: $font-color-green;
-// }
-
-// a:hover:before {
-// 	width: 100%;
-// }
-
-// a::before {
-// 	transition: width 0.35s;
-// }
-
 // ========== link a end =========
 .container {
   max-width: 1172px;
@@ -60,5 +35,16 @@ ol {
   // background-color: rgb(252, 246, 198);
 }
 
+.tag {
+  display: flex;
+  gap: 12px;
+  padding: 24px 0;
 
+  &__item {
+    color: #666;
 
+    &--active {
+      color: #000000;
+    }
+  }
+}

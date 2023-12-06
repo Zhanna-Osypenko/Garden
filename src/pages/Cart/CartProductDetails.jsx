@@ -11,6 +11,8 @@ const CartProductDetails = () => {
     (state) => state.products
   );
 
+  const [addedToCart, setAddedToCart] = useState(false);
+
   useEffect(() => {
     console.log("111Product ID:", id);
     dispatch(fetchProductById(id))
@@ -38,6 +40,10 @@ const CartProductDetails = () => {
   let handlerAddToCart = () => {
     console.log('==> handlerAddToCart currentProduct:', currentProduct);
     dispatch(addToCart(currentProduct));
+    setAddedToCart(true);
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 1500);
   }
   
   
@@ -60,6 +66,7 @@ const CartProductDetails = () => {
                 <button data-key={currentProduct.id} onClick={handlerAddToCart}>
                   Add to cart
                 </button>
+                {addedToCart && <p className="text-help">Product has added</p>}
                 <p className="cart-description">Description</p>
                 <p>{currentProduct.description}</p>
               </div>

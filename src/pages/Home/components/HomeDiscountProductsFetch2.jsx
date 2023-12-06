@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function HomeDiscountProductsFetch2() {
   const [discountProducts, setDiscountProducts] = useState([]);
@@ -29,23 +30,25 @@ function HomeDiscountProductsFetch2() {
 
           <div className="home-sale__products">
             {saleProducts.map((product) => (
-              <div key={product.id} className="home-sale__product">
-                <h6>{`-${(
-                  (1 - product.discont_price / product.price) *
-                  100
-                ).toFixed(0)}%`}</h6>
-                <img
-                  src={`${backendURL}${product.image}`}
-                  alt={product.title}
-                />
-                <p>
-                  <span>{`${product.price}$`}</span> &nbsp;&nbsp;
-                  {`${product.discont_price}$`}
-                </p>
-                <a href="#" className="home-sale__product-link">
-                  {product.title}
-                </a>
-              </div>
+              <Link to={`/products/${product.id}`}>
+                <div key={product.id} className="home-sale__product">
+                  <h6>{`-${(
+                    (1 - product.discont_price / product.price) *
+                    100
+                  ).toFixed(0)}%`}</h6>
+                  <img
+                    src={`${backendURL}${product.image}`}
+                    alt={product.title}
+                  />
+                  <p>
+                    <span>{`${product.price}$`}</span> &nbsp;&nbsp;
+                    {`${product.discont_price}$`}
+                  </p>
+                  <p href="#" className="home-sale__product-link">
+                    {product.title}
+                  </p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -2,9 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
-    @include onMobile{
-      margin-top: 52px;
+    
+    @include onMobile {
+      padding: 0 12px;
     }
   
     background-image: url("../../../../public/Home/garden1.svg");

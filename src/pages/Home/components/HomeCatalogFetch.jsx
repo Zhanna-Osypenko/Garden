@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 function HomeCatalogFetch() {
+  const navigate = useNavigate();
   const [catalogCart, setCatalogCart] = useState([]);
   const backendURL =
     process.env.REACT_APP_BACKEND_URL || "http://localhost:3333";
@@ -12,6 +13,10 @@ function HomeCatalogFetch() {
       .then((data) => setCatalogCart(data))
       .catch((error) => console.error("Error fetching data:", error));
   }, [backendURL]);
+
+  const handleCategoryClick = (categoryId) => {
+    navigate(`/category/${categoryId}`);
+  };
 
   return (
     <div className="home-catalog">
@@ -25,13 +30,19 @@ function HomeCatalogFetch() {
           </div>
           <div className="home-catalog__carts">
             {catalogCart.map((category) => (
-              <div key={category.id} className="home-catalog__cart">
-                <img
-                  src={`${backendURL}${category.image}`}
-                  alt={category.title}
-                />
-                <h3>{category.title}</h3>
-              </div>
+         
+                <div
+                  key={category.id}
+                  className="home-catalog__cart"
+                  onClick={() => handleCategoryClick(category.id)}
+                >
+                  <img
+                    src={`${backendURL}${category.image}`}
+                    alt={category.title}
+                  />
+                  <h3>{category.title}</h3>
+                </div>
+
             ))}
           </div>
         </div>

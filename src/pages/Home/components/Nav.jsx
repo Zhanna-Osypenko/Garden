@@ -32,6 +32,10 @@ function Nav() {
     setClicked(!clicked);
   };
 
+  const handleMenuLinkClick = () => {
+    setClicked(false);
+  };
+
   useEffect(() => {
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
     setCartTotal(totalItems);
@@ -52,7 +56,6 @@ function Nav() {
             </div>
 
             <h2 className="navbar__left-name">GardenLife</h2>
-            {/* <button className="navbar__left-btn">Catalog</button> */}
           </div>
 
           <div className="navbar__menu-icon" onClick={handleClick}>
@@ -64,14 +67,14 @@ function Nav() {
               {menuItems.map((item, index) => {
                 return (
                   <li key={index}>
-                    <NavLink className={setActiveLink} to={item.url}>
+                    <NavLink className={setActiveLink} to={item.url} onClick={handleMenuLinkClick}>
                       {item.title}
                     </NavLink>
                   </li>
                 );
               })}
             </ul>
-            <Link className="navbar__right-cart__link" to="/cart">
+            <Link className="navbar__right-cart__link" to="/cart" onClick={handleMenuLinkClick}>
               <div className="navbar__right-cart">
                 <img src="./Header/header12.svg" alt="cart" />
                 {cartTotal > 0 && <span className="cart-count">{cartTotal}</span>}

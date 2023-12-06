@@ -54,8 +54,10 @@ function Nav() {
                 <img src="./Header/header11.svg" alt="logo" />
               </NavLink>
             </div>
-
-            <h2 className="navbar__left-name">GardenLife</h2>
+            <NavLink className="navbar__logo-link" to="/">
+              <h2 className="navbar__left-name">GardenLife</h2>
+            </NavLink>
+            
           </div>
 
           <div className="navbar__menu-icon" onClick={handleClick}>

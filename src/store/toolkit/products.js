@@ -4,7 +4,7 @@ export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
     try {
-      let response = await fetch("http://localhost:3333/products/all");
+      let response = await fetch("https://garden-kcwi.onrender.com/products/all");
       let data = await response.json();
 
       return data;
@@ -18,7 +18,7 @@ export const fetchProductById = createAsyncThunk(
   "products/fetchProductById",
   async (productId) => {
     try {
-      let response = await fetch(`http://localhost:3333/products/${productId}`);
+      let response = await fetch(`https://garden-kcwi.onrender.com/products/${productId}`);
       let data = await response.json();
       console.log("data fetchProductById => ", data);
       return data[0];

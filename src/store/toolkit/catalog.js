@@ -4,7 +4,7 @@
 //   "catalog/fetchCatalog",
 //   async () => {
 //     try {
-//       let response = await fetch("http://localhost:3333/categories/all");
+//       let response = await fetch("https://garden-kcwi.onrender.com/categories/all");
 //       let data = await response.json();
 //       console.log("data try categories/all => ", data);
 //       return data;
@@ -54,7 +54,7 @@ export const fetchCatalog = createAsyncThunk(
   "catalog/fetchCatalog",
   async () => {
     try {
-      let response = await fetch("http://localhost:3333/categories/all");
+      let response = await fetch("https://garden-kcwi.onrender.com/categories/all");
       let data = await response.json();
 
       return data;

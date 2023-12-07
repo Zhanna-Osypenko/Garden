@@ -56,7 +56,7 @@ const CartProductDetails = () => {
             <div className="cart-item__box">
               <div className="cart-item__img">
                 <img
-                  src={`http://localhost:3333${currentProduct.image}`}
+                  src={`https://garden-kcwi.onrender.com${currentProduct.image}`}
                   alt={currentProduct.title}
                 />
               </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function HomeDiscountProductsFetch2() {
   const [discountProducts, setDiscountProducts] = useState([]);
 
-  const backendURL = "http://localhost:3333";
+  const backendURL = "https://garden-kcwi.onrender.com";
 
   useEffect(() => {
     fetch(`${backendURL}/products/all`)

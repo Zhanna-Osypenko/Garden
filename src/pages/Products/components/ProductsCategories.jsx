@@ -10,7 +10,7 @@ const ProductsCategories = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3333/categories/${categoryId}`)
+    fetch(`https://garden-kcwi.onrender.com/categories/${categoryId}`)
       .then((resp) => resp.json())
       .then((res) => setProducts(res))
       .finally(() => {

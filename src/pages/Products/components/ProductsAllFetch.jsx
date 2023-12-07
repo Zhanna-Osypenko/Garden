@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 
 function ProductsAllFetch() {
   const [allProducts, setAllProducts] = useState([]);
-  const backendURL = "http://localhost:3333";
+  const backendURL = "https://garden-kcwi.onrender.com";
 
   return (
     <div className="products-cards__list">

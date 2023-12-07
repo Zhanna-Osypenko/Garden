@@ -5,7 +5,7 @@ import HomeDiscountProductsFetch from "./HomeDiscountProductsFetch";
 function HomeSalePage() {
   const [categories, setCategories] = useState([]);
   const backendURL =
-    process.env.REACT_APP_BACKEND_URL || "http://localhost:3333";
+    process.env.REACT_APP_BACKEND_URL || "https://garden-kcwi.onrender.com";
 
   useEffect(() => {
     // Загружаем все категории при монтировании компонента

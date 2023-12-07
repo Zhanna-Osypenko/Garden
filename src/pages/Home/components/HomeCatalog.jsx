@@ -41,7 +41,7 @@ function HomeCatalog() {
   ];
 
   const backendURL =
-    process.env.REACT_APP_BACKEND_URL || "http://localhost:3333";
+    process.env.REACT_APP_BACKEND_URL || "https://garden-kcwi.onrender.com";
 
   return (
     <div className="home-catalog">

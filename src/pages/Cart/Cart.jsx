@@ -56,7 +56,7 @@ const Cart = () => {
                     <div className="cart__img-box">
                       {item.image && (
                         <img
-                          src={`http://localhost:3333${item.image}`}
+                          src={`https://garden-kcwi.onrender.com${item.image}`}
                           alt={item.title}
                         />
                       )}

@@ -43,7 +43,7 @@ export const fetchProductsByCategory = (categoryId) => {
     console.log("fetchProductsByCategory in action");
 
     try {
-      let response = await fetch(`http://localhost:3333/categories/${categoryId}`);
+      let response = await fetch(`https://garden-kcwi.onrender.com/categories/${categoryId}`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -66,7 +66,7 @@ export const fetchProducts = () => {
     console.log("fetchProducts in action");
 
     try {
-      let response = await fetch("http://localhost:3333/products/all");
+      let response = await fetch("https://garden-kcwi.onrender.com/products/all");
       let data = await response.json();
       console.log("data try => ", data);
 
@@ -88,7 +88,7 @@ export const fetchProductById = (productId) => {
     console.log("fetchProductById in action");
 
     try {
-      let response = await fetch(`http://localhost:3333/products/${productId}`);
+      let response = await fetch(`https://garden-kcwi.onrender.com/products/${productId}`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

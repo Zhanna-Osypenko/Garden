@@ -7,7 +7,7 @@ import { fetchCatalog } from "store/toolkit/catalog";
 function MainCatalogPage2() {
   const navigate = useNavigate();
   const backendURL =
-    process.env.REACT_APP_BACKEND_URL || "http://localhost:3333";
+    process.env.REACT_APP_BACKEND_URL || "https://garden-kcwi.onrender.com";
   const dispatch = useDispatch();
   const { catalog, loading, error } = useSelector((state) => state.catalog);
   const { products } = useSelector((state) => state.products);

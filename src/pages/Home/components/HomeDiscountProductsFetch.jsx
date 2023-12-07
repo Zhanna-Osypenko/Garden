@@ -4,7 +4,7 @@ function HomeDiscountProductsFetch({ categoryId, categoryName }) {
   const [discountProducts, setDiscountProducts] = useState([]);
   
   const backendURL =
-    process.env.REACT_APP_BACKEND_URL || "http://localhost:3333";
+    process.env.REACT_APP_BACKEND_URL || "https://garden-kcwi.onrender.com";
 
   useEffect(() => {
     fetch(`${backendURL}/categories/${categoryId}`)

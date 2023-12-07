@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 function MainCatalogPage() {
   const [catalogCart, setCatalogCart] = useState([]);
   const backendURL =
-    process.env.REACT_APP_BACKEND_URL || "http://localhost:3333";
+    process.env.REACT_APP_BACKEND_URL || "https://garden-kcwi.onrender.com";
 
   useEffect(() => {
     fetch(`${backendURL}/categories/all`)

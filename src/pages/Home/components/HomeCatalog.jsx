@@ -49,9 +49,6 @@ function HomeCatalog() {
         <div className="home-catalog__content">
           <div className="home-catalog__title">
             <h2>Catalog</h2>
-            {/* <button className="home-catalog__title-btn">
-              <NavLink to="/catalog">All Categories</NavLink>
-            </button> */}
 
             <NavLink className="home-catalog__title-btn" to="/catalog">
               All Categories

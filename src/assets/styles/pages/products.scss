@@ -145,7 +145,11 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    // background-color: red;
+    align-items: stretch;
+    
+    a{
+      text-decoration: none;
+    }
 
     @include onLaptop {
       justify-content: center;
@@ -160,6 +164,7 @@
       padding: 10px;
       max-width: 278px;
       min-height: 250px;
+      height: 100%;
       cursor: pointer;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       border-radius: 20px;

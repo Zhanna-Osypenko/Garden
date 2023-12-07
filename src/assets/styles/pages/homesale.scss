@@ -14,9 +14,6 @@
       }
 
       & > h2 {
-        font-size: calcFluidFontSize(24, 30, 480, 1280);
-        font-weight: 700;
-
         @include onLaptop{
           margin: 0 auto;
         }
@@ -51,6 +48,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch;
     gap: 20px;
     overflow-x: auto;
     padding-bottom: 20px;
@@ -87,7 +85,7 @@
     position: relative;
     padding: 10px;
     max-width: 278px;
-    min-height: 250px;
+    height: 100%;
     cursor: pointer;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 20px;

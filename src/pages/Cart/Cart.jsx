@@ -98,11 +98,11 @@ const Cart = () => {
 
                     {item.discont_price ? (
                       <>
-                        <p className="cart__price">{`${item.discont_price*item.quantity}$`}</p>
-                        <p className="cart__discount-price">{`${item.price*item.quantity}$`}</p>
+                        <p className="cart__price">{`${(item.discont_price*item.quantity).toFixed(2)}$`}</p>
+                        <p className="cart__discount-price">{`${(item.price*item.quantity).toFixed(2)}$`}</p>
                       </>
                     ) : (
-                      <p className="cart__price">{`${item.price*item.quantity}$`}</p>
+                      <p className="cart__price">{`${(item.price*item.quantity).toFixed(2)}$`}</p>
                     )}
                   </div>
                 ) : null

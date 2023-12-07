@@ -53,10 +53,6 @@ const Sale = () => {
     dispatch(filterByPrice({ ...priceValue, isSale: true }));
   }, [priceValue]);
 
-  // useEffect(() => {
-  //   dispatch(filterBySale());  
-  // }, []); 
-
   useEffect(() => {
     dispatch(filterBySale({ isSale, priceValue }));  
   }, [isSale, priceValue]); 

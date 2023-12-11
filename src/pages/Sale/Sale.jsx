@@ -65,12 +65,6 @@ const Sale = () => {
     }));
   };
 
-  // console.log("filteredProducts => ", filteredProducts);
-
-  // const filterData = sortProducts(filteredProducts);
-
-  // console.log("333filterData sale => ", filterData);
-
   const filterData = sortProducts(filteredProducts);
 
   const discountedProducts = filterData.filter((product) => product.discont_price !== null);

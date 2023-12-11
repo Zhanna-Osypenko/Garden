@@ -15,7 +15,6 @@ const ProductsByCategory = () => {
   const { loading: catalogLoading, catalog, error: catalogError, currentCategoryId, categories } = useSelector((state) => state.catalog);
 
   
-
   useEffect(() => {
     console.log("11 fetchCatalog effect");
     dispatch(fetchCatalog());

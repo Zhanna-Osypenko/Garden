@@ -1,7 +1,6 @@
 .cart-main {
   margin-top: 80px;
   width: 100%;
-  //   background-color: yellow;
 
   h1 {
     font-size: 36px;
@@ -31,15 +30,23 @@
 
   &__list-item {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
     gap: 10px;
     padding: 20px 0;
     border-bottom: 1px solid grey;
     position: relative;
 
+    @include onLaptop{
+      grid-template-columns: 1fr 1fr .5fr .5fr;
+    }
+
+    @include onMobile{
+      grid-template-columns: 1fr 1fr .5fr;
+    }
+
     .cart__img-box {
-      width: 160px;
-      height: 160px;
+      max-width: 160px;
+      max-height: 160px;
 
       img {
         display: block;
@@ -50,7 +57,6 @@
     }
 
     .cart__btn-block {
-      //   background-color: green;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -63,6 +69,14 @@
         width: 18px;
         height: 18px;
         cursor: pointer;
+
+        @include onLaptop{
+          right: 5%;
+        }
+
+        @include onMobile{
+          right: 0;
+        }
 
         &-img {
           width: 100%;
@@ -86,7 +100,7 @@
         max-width: 130px;
 
         & > p {
-          font-size: 20px;
+          font-size: calcFluidFontSize(14, 20, 480, 1280);
         }
 
         button {
@@ -94,25 +108,34 @@
           padding: 10px 14px;
           background: none;
           border: none;
-          font-size: 24px;
+          font-size: calcFluidFontSize(14, 24, 480, 1280);
+
+          @include onLaptop{
+            padding: 5px 10px;
+          }
+
+
         }
       }
     }
 
     & > .cart__price {
-      // font-size: 24px;
-      font-size: calcFluidFontSize(18, 24, 480, 1280);
+      font-size: calcFluidFontSize(14, 22, 480, 1280);
       font-weight: 600;
     }
 
     & > .cart__discount-price {
+      font-size: calcFluidFontSize(12, 18, 480, 1280);
       text-decoration: line-through;
+
+      @include onMobile{
+        display: none;
+      }
     }
   }
 
   &__order-details {
     padding: 18px;
-    // background-color: yellowgreen;
     border-radius: 14px;
     border: 1px solid grey;
     align-self: flex-start;

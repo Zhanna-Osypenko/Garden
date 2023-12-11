@@ -39,10 +39,10 @@ const productsSlice = createSlice({
     error: null,
     currentCategoryId: null,
     isSale: false,
-    // currentProduct: null,
   },
 
   reducers: {
+    
     // ========= Products/Sale reducer ========
 
     filterByPrice: (state, action) => {
@@ -75,7 +75,6 @@ const productsSlice = createSlice({
 
     // ========= Cart reducer ==========
 
-    
     addToCart: (state, action) => {
       const product = action.payload;
     

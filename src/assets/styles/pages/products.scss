@@ -1,5 +1,4 @@
 .products {
-  //   background-color: rgb(226, 246, 185);
 
   @include onMobile {
     padding: 0 12px;
@@ -54,7 +53,6 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      // padding: 12px 12px 12px 0;
 
       & > .price-box {
         display: flex;
@@ -97,8 +95,6 @@
       
       h4{
         width: max-content;
-        // padding: 0 20px;
-
       }
 
       .dropdown {

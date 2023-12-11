@@ -9,8 +9,7 @@ function MainCatalogPage2() {
   const backendURL =
     process.env.REACT_APP_BACKEND_URL || "https://garden-kcwi.onrender.com";
   const dispatch = useDispatch();
-  const { catalog, loading, error } = useSelector((state) => state.catalog);
-  const { products } = useSelector((state) => state.products);
+  const { catalog } = useSelector((state) => state.catalog);
 
   useEffect(() => {
     dispatch(fetchCatalog());

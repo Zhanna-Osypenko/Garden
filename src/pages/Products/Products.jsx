@@ -67,10 +67,6 @@ const Products = () => {
     }));
   };
 
-  // const handleDiscountCheckboxChange = (event) => {
-  //   console.log('event checkbox =>', event.target.checked);
-  //   dispatch(filterBySale(event.target.checked));
-  // };
 
   const handleDiscountCheckboxChange = (event) => {
     console.log('event checkbox =>', event.target.checked);
@@ -80,15 +76,10 @@ const Products = () => {
     }));
   };
   
-  
-
-
   console.log("filteredProducts => ", filteredProducts);
 
   const filterData = sortProducts(filteredProducts.length > 0 ? filteredProducts : products);
   
-
-
   console.log("data in Products", filterData);
 
   return (

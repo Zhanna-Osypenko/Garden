@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts,updateCartItemQuantity, removeCartItem } from "store/toolkit/products";
+import { fetchProducts,  updateCartItemQuantity, removeCartItem } from "store/toolkit/products";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state.products);
